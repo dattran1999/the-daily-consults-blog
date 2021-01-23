@@ -3,6 +3,7 @@ import { Link, graphql } from "gatsby"
 
 import Bio from "../components/bio"
 import Hero from "../components/hero"
+import Testimonials from '../components/testimonials'
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
@@ -59,6 +60,7 @@ const BlogIndex = ({ data, location }) => {
       <Bio />
       <Hero title={siteTitle} />
       {posts.length === 0 ? noPostMessage : postList}
+      <Testimonials />
     </Layout>
   )
 }
