@@ -1,19 +1,23 @@
 import React from 'react'
+import styled from 'styled-components'
 
 import Flex from './flex'
 
 const Hero = ({ title }) => {
   return (
     <Flex direction="row">
-      <div style={{ flexBasis: '50%' }}>
+      <Section>
         <h1>Discover {title}</h1>
         <h2>At TDCB, we deliver engaging and innovative insights about business strategy, to help entrepreneurs become market-changers today.</h2>
-      </div>
-      <div style={{ flexBasis: '50%' }}>
+      </Section>
+      <Section>
         Some picture here
-      </div>
+      </Section>
     </Flex>
   )
 }
 
+const Section = styled.div`
+  flex-basis: 50%;
+`
 export default Hero
