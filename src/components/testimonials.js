@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import Image from "gatsby-image"
 
 import Flex from './flex'
+import Section from './section'
 
 const Testimonials = () => {
   const data = useStaticQuery(graphql`
@@ -18,7 +19,7 @@ const Testimonials = () => {
     }
   `)
   return (
-    <div>
+    <Section>
       <HeaderWrapper>
         <h1>Reviews</h1>
         <p>What some of our readers are saying</p>
@@ -33,7 +34,7 @@ const Testimonials = () => {
           </TestimonialWrapper>
         ))}
       </Flex>
-    </div>
+    </Section>
   )
 }
 
