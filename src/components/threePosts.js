@@ -4,6 +4,10 @@ import PostCard from './postCard';
 import Flex from './flex';
 
 const ThreePosts = ({ posts }) => {
+  // TODO: more responsive by not needing to refresh
+  const mediaQueryList = window.matchMedia('(max-width: 28rem)');
+  let mobileView = mediaQueryList.matches;
+
   const noPostMessage = (
     <p>
       No blog posts found. Add markdown posts to "content/blog" (or the
@@ -32,7 +36,7 @@ const ThreePosts = ({ posts }) => {
     )
   }
 
-  const postList = (
+  const postListDesktop = (
     <ol style={{ listStyle: `none` }}>
       <Flex direction="row" valign='center'>
         <Flex style={{ width: '50%', height: '100%' }}>
@@ -45,9 +49,22 @@ const ThreePosts = ({ posts }) => {
       </Flex>
     </ol>
   )
+  const postListMobile = (
+    <ol style={{ listStyle: `none` }}>
+      <Flex direction="column" valign='center'>
+        {postWrapper(posts[0], 'primary')}
+        {postWrapper(posts[1], 'primary')}
+        {postWrapper(posts[2], 'primary')}
+      </Flex>
+    </ol>
+  )
   return (
     <Section>
-      {posts.length === 0 ? noPostMessage : postList}
+      {posts.length === 0 ? noPostMessage :
+        (mobileView ?
+          postListMobile :
+          postListDesktop
+        )}
     </Section>
   )
 }
