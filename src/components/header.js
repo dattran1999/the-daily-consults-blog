@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react"
 import { Link } from "gatsby"
 import styled from 'styled-components';
 
-import Flex from './flex'
+import { colors } from '../theme';
+import Flex from './flex';
 
 const Header = ({ title }) => {
   const [showNavBar, setShowNavBar] = useState(true);
@@ -29,17 +30,18 @@ const Header = ({ title }) => {
 
   return (
     <Transition>
-      <NavBar className={showNavBar ? 'active' : 'hidden'}>
+      <NavBar className={showNavBar ? 'active' : 'hidden'} colors={colors}>
         <Flex
           direction="row"
           halign="space-around"
-          grow={1}
+          valign="center"
+          style={{ height: '100%' }}
         >
-          <p> <Link to="/">{title}</Link> </p>
-          <p> <Link to="/">Story of the week</Link> </p>
-          <p> <Link to="/">Posts</Link> </p>
-          <p> <Link to="/">Books</Link> </p>
-          <p> <Link to="/">More</Link> </p>
+          <Link to="/">{title}</Link>
+          <Link to="/">Story of the week</Link>
+          <Link to="/">Posts</Link>
+          <Link to="/">Books</Link>
+          <Link to="/">More</Link>
         </Flex>
       </NavBar>
     </Transition>
@@ -66,5 +68,6 @@ const NavBar = styled.header`
   margin: 0 auto;
   height: 3rem;
   z-index: 1000;
+  background-color: ${props => props.colors.yellow};
 `;
 export default Header
