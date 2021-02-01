@@ -1,12 +1,19 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import { Link } from "gatsby"
 import styled from 'styled-components';
 
 import { colors } from '../theme';
-import Flex from './flex';
 import Container from "./container";
 
 const Header = ({ title }) => {
+  const links = [
+    { title: title, to: '/' },
+    { title: 'Posts', to: '/' },
+    { title: 'Book', to: '/' },
+    { title: 'More', to: '/' },
+  ]
+
+  // handle scrolling
   const [showNavBar, setShowNavBar] = useState(true);
   const [scrollPos, setScrollPos] = useState(document.body.getBoundingClientRect().top);
 
@@ -29,27 +36,49 @@ const Header = ({ title }) => {
     }
   }, [showNavBar, scrollPos])
 
+  const NavLinks = links.map((link, index) => (
+    <Link key={index} to={link.to}>{link.title}</Link>
+  ))
+
+  // hamburger menu handler
+  const navLinksRef = useRef();
+  const [hamburgerMenuOpened, setHamburgerMenuOpened] = useState(false);
+  const hamburgerClick = () => {
+    setHamburgerMenuOpened(!hamburgerMenuOpened);
+    if (hamburgerMenuOpened) {
+      navLinksRef.current.classList.add('hidden');
+      navLinksRef.current.classList.remove('active');
+    } else {
+      navLinksRef.current.classList.remove('hidden');
+      navLinksRef.current.classList.add('active');
+    }
+  }
+
   return (
     <Transition>
       <NavBar className={showNavBar ? 'active' : 'hidden'} colors={colors}>
         <Container style={{ height: '100%' }}>
-          <Flex
-            direction="row"
-            halign="space-around"
-            valign="center"
-            style={{ height: '100%' }}
-          >
-            <Link to="/">{title}</Link>
-            <Link to="/">Story of the week</Link>
-            <Link to="/">Posts</Link>
-            <Link to="/">Books</Link>
-            <Link to="/">More</Link>
-          </Flex>
+          <HamburgerMenuWrapper onClick={hamburgerClick}>
+            <HamburgerMenu>
+              <span></span>
+              <span></span>
+              <span></span>
+            </HamburgerMenu>
+            <NavLinksWrapper ref={navLinksRef} colors={colors}>
+              {NavLinks}
+            </NavLinksWrapper>
+          </HamburgerMenuWrapper>
+
+          <NavLinksWrapper colors={colors}>
+            {NavLinks}
+          </NavLinksWrapper>
         </Container>
       </NavBar>
     </Transition>
   )
 }
+
+const NAV_BAR_HEIGHT = '3rem';
 
 const Transition = styled.div`
   .active {
@@ -69,8 +98,48 @@ const NavBar = styled.header`
   left: 0;
   width: 100%;
   margin: 0 auto;
-  height: 3rem;
+  height: ${NAV_BAR_HEIGHT};
   z-index: 1000;
   background-color: ${props => props.colors.yellow};
+`;
+
+const NavLinksWrapper = styled.div`
+  width: 100%;
+  @media (min-width: 28rem) {
+    height: 100%;
+  }
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  @media (max-width: 28rem) {
+    /* hidden by default */
+    visibility: hidden;
+    position: absolute;
+    top: ${NAV_BAR_HEIGHT};
+    left: 0;
+    flex-direction: column;
+    background-color: ${props => props.colors.yellow};
+  }
+`;
+
+const HamburgerMenu = styled.div`
+  width: 25px;
+  span {
+    margin-top: 5px;
+    background: black;
+    height: 2px;
+    width: 100%;
+    display: block;
+  }
+`;
+
+const HamburgerMenuWrapper = styled.div`
+  height: 100%;
+  display: flex;
+  align-items: center;
+  @media (min-width: 28rem) {
+    display: none;
+  }
 `;
 export default Header
