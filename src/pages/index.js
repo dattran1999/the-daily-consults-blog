@@ -1,12 +1,13 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 
 import Bio from "../components/bio"
-import Hero from "../components/hero"
 import Testimonials from '../components/testimonials'
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import RecentlyUpload from '../components/recentlyUpload';
+import postsByTopic from '../components/postsByTopic';
+import PostsByTopic from "../components/postsByTopic"
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
@@ -18,6 +19,8 @@ const BlogIndex = ({ data, location }) => {
       <Bio />
       <RecentlyUpload posts={posts} />
       <Testimonials />
+      <PostsByTopic topicTitle="Marketing" titleColor="yellow" posts={posts} />
+      <PostsByTopic topicTitle="Sales" titleColor="orange" posts={posts} />
     </Layout>
   )
 }
