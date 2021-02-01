@@ -5,15 +5,17 @@ import Header from './header'
 const Layout = ({ title, children }) => {
 
   return (
-    <div className="global-wrapper">
+    <>
       <Header title={title} />
-      <main>{children}</main>
+      <div className="global-wrapper">
+        <main>{children}</main>
+      </div>
       <footer>
         © {new Date().getFullYear()}, Built with
         {` `}
         <a href="https://www.gatsbyjs.com">Gatsby</a>
       </footer>
-    </div>
+    </>
   )
 }
 
