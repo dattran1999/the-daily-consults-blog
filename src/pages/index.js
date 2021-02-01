@@ -5,8 +5,6 @@ import Bio from "../components/bio"
 import Testimonials from '../components/testimonials'
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import RecentlyUpload from '../components/recentlyUpload';
-import postsByTopic from '../components/postsByTopic';
 import PostsByTopic from "../components/postsByTopic"
 
 const BlogIndex = ({ data, location }) => {
@@ -17,7 +15,7 @@ const BlogIndex = ({ data, location }) => {
     <Layout location={location} title={siteTitle}>
       <SEO title="All posts" />
       <Bio />
-      <RecentlyUpload posts={posts} />
+      <PostsByTopic topicTitle="Recently Upload" titleColor="black" posts={posts} />
       <Testimonials />
       <PostsByTopic topicTitle="Marketing" titleColor="yellow" posts={posts} />
       <PostsByTopic topicTitle="Sales" titleColor="orange" posts={posts} />
