@@ -4,15 +4,18 @@ import styled from 'styled-components';
 import Section from './section';
 import ThreePosts from './threePosts';
 import ButtonLink from './buttonLink';
+import Flex from './flex';
 
 const PostsByTopic = ({ topicTitle, titleColor, posts }) => {
   return (
     <Section>
       <Title color={titleColor}>{topicTitle}</Title>
       <ThreePosts posts={posts} />
-      <ButtonLink type="secondary">
-        Read more
+      <Flex halign='center'>
+        <ButtonLink type='secondary'>
+          Read more
       </ButtonLink>
+      </Flex>
     </Section>
   )
 }

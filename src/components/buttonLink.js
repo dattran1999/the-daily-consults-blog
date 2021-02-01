@@ -1,51 +1,39 @@
 import React from 'react';
 import { Link } from 'gatsby';
+import styled from 'styled-components';
 
 import { colors } from '../theme';
-import Flex from './flex';
 
 const ButtonLink = ({ children, type, ...rest }) => {
-  let typeStyle;
-  switch (type) {
-    case 'primary':
-      typeStyle = primaryStyle;
-      break;
-    case 'secondary':
-      typeStyle = secondaryStyle;
-      break;
-  }
   return (
-    <Flex halign='center'>
-      <Link>
-        <Flex
-          {...rest}
-          style={{ ...typeStyle, ...commonStyle }}
-          valign='center'
-          halign='center'>
-          {children}
-        </Flex>
-      </Link>
-    </Flex>
+    <Link>
+      <Button type={type} colors={colors}>
+        {children}
+      </Button>
+    </Link>
   )
 }
 
-const primaryStyle = {
-  backgroundColor: colors.yellow,
-  color: colors.black,
-  padding: '10px 25px',
-  whiteSpace: 'nowrap',
-  transition: 'background-color 0.2s ease-out',
-}
-
-const secondaryStyle = {
-  backgroundColor: colors.black,
-  color: colors.white,
-}
-
-const commonStyle = {
-  width: '200px',
-  height: '40px',
-  borderRadius: '5px',
-}
+const Button = styled.div`
+  width: 200px;
+  height: 40px;
+  border-radius: 5px;
+  padding: 10px 25px;
+  white-space: nowrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: ${props =>
+    props.type === 'primary' && props.colors.yellow ||
+    props.type === 'secondary' && props.colors.black
+  };
+  color: ${props =>
+    props.type === 'primary' && props.colors.black ||
+    props.type === 'secondary' && props.colors.white
+  };
+  :hover {
+    cursor: pointer;
+  }
+`;
 
 export default ButtonLink;
