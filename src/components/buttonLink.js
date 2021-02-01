@@ -24,12 +24,12 @@ const Button = styled.div`
   justify-content: center;
   align-items: center;
   background-color: ${props =>
-    props.type === 'primary' && props.colors.yellow ||
-    props.type === 'secondary' && props.colors.black
+    (props.type === 'primary' && props.colors.yellow) ||
+    (props.type === 'secondary' && props.colors.black)
   };
   color: ${props =>
-    props.type === 'primary' && props.colors.black ||
-    props.type === 'secondary' && props.colors.white
+    (props.type === 'primary' && props.colors.black) ||
+    (props.type === 'secondary' && props.colors.white)
   };
   :hover {
     cursor: pointer;
