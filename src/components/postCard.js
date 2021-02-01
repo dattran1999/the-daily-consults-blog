@@ -5,7 +5,6 @@ import styled from 'styled-components';
 import { colors } from '../theme';
 
 const PostCard = ({ title, featuredImage, slug, date, description, ...rest }) => {
-  console.log(featuredImage)
   return (
     <Card style={rest} colors={colors}>
       <article
