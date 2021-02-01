@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import { colors } from '../theme';
 import Flex from './flex';
+import Container from "./container";
 
 const Header = ({ title }) => {
   const [showNavBar, setShowNavBar] = useState(true);
@@ -31,18 +32,20 @@ const Header = ({ title }) => {
   return (
     <Transition>
       <NavBar className={showNavBar ? 'active' : 'hidden'} colors={colors}>
-        <Flex
-          direction="row"
-          halign="space-around"
-          valign="center"
-          style={{ height: '100%' }}
-        >
-          <Link to="/">{title}</Link>
-          <Link to="/">Story of the week</Link>
-          <Link to="/">Posts</Link>
-          <Link to="/">Books</Link>
-          <Link to="/">More</Link>
-        </Flex>
+        <Container style={{ height: '100%' }}>
+          <Flex
+            direction="row"
+            halign="space-around"
+            valign="center"
+            style={{ height: '100%' }}
+          >
+            <Link to="/">{title}</Link>
+            <Link to="/">Story of the week</Link>
+            <Link to="/">Posts</Link>
+            <Link to="/">Books</Link>
+            <Link to="/">More</Link>
+          </Flex>
+        </Container>
       </NavBar>
     </Transition>
   )
