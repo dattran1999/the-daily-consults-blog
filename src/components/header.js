@@ -57,7 +57,7 @@ const Header = ({ title }) => {
   return (
     <Transition>
       <NavBar className={showNavBar ? 'active' : 'hidden'} colors={colors}>
-        <Container style={{ height: '100%' }}>
+        <Container hasPaddingVertical={false} style={{ height: '100%' }}>
           <HamburgerMenuWrapper onClick={hamburgerClick}>
             <HamburgerMenu>
               <span></span>

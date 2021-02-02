@@ -4,7 +4,8 @@ import { graphql } from "gatsby"
 import Testimonials from '../components/testimonials'
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import PostsByTopic from "../components/postsByTopic"
+import Hero from '../components/hero';
+import AllPosts from '../components/allPosts';
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
@@ -13,10 +14,9 @@ const BlogIndex = ({ data, location }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title="All posts" />
-      <PostsByTopic topicTitle="Recently Upload" titleColor="black" posts={posts} />
+      <Hero posts={posts} />
       <Testimonials />
-      <PostsByTopic topicTitle="Marketing" titleColor="yellow" posts={posts} />
-      <PostsByTopic topicTitle="Sales" titleColor="orange" posts={posts} />
+      <AllPosts posts={posts} />
     </Layout>
   )
 }

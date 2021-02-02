@@ -2,15 +2,16 @@ import React from "react"
 
 import Header from './header';
 import Footer from './footer';
+import Container from './container';
 
 const Layout = ({ title, children }) => {
 
   return (
     <>
       <Header title={title} />
-      <div className="global-wrapper">
+      <Container>
         <main>{children}</main>
-      </div>
+      </Container>
       <Footer />
     </>
   )
