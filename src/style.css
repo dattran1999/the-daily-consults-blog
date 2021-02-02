@@ -61,6 +61,11 @@
   --color-heading: #1a202c;
   --color-heading-black: black;
   --color-accent: #d1dce5;
+  --orange: #f59b42;
+  --yellow: #f5e342;
+  --white: #ffffff;
+  --black: #000000;
+  --gray: #f5f5f5;
 }
 
 /* HTML elements */
@@ -164,7 +169,7 @@ p {
   line-height: var(--lineHeight-relaxed);
   --baseline-multiplier: 0.179;
   --x-height-multiplier: 0.35;
-  margin: var(--spacing-0) var(--spacing-0) var(--spacing-8) var(--spacing-0);
+  margin: var(--spacing-0) var(--spacing-0) var(--spacing-4) var(--spacing-0);
   padding: var(--spacing-0);
 }
 

@@ -13,7 +13,14 @@ const AllPosts = ({ posts }) => {
         <PostsByTopic topicTitle="Sales" titleColor="orange" posts={posts} />
       </Primary>
       <Secondary>
-        <ButtonLink type='primary'>Subscribe</ButtonLink>
+        <ButtonWrapper>
+          <ButtonLink type='primary'>Subscribe</ButtonLink>
+        </ButtonWrapper>
+        <ButtonWrapper>
+          <SocialMediaWrapper>
+            <p>Social Media Accounts</p>
+          </SocialMediaWrapper>
+        </ButtonWrapper>
       </Secondary>
     </Flex>
   )
@@ -28,11 +35,22 @@ const Primary = styled.div`
 
 const Secondary = styled.div`
   flex: 1;
+  height: 100vh;
   position: sticky;
   top: var(--spacing-32);
-  margin-top: var(--spacing-32);
   @media (max-width: 28em) {
     display: none;
   }
 `
+
+const ButtonWrapper = styled.div`
+  margin-top: var(--spacing-16);
+`;
+
+const SocialMediaWrapper = styled.div`
+  background-color: var(--yellow);
+  border-radius: 5px;
+  padding: 10px 10px;
+`;
+
 export default AllPosts;
