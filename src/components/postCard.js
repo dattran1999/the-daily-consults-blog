@@ -6,7 +6,7 @@ import { colors } from '../theme';
 
 const PostCard = ({ title, featuredImage, slug, date, description, ...rest }) => {
   return (
-    <Card style={rest} colors={colors}>
+    <Card {...rest} colors={colors}>
       <Article>
         {/* Header of post */}
         <header>
@@ -42,8 +42,8 @@ const Card = styled.div`
   border-radius: 10px;
   background-color: ${props => props.colors.gray};
   padding: 10px 10px;
-  margin: 10px 0 10px 5px;
-  margin-left: 0;
+  margin-top: 10px; 
+  margin-right: 10px;
   width: 100%;
 `;
 

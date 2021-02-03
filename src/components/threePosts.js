@@ -2,6 +2,7 @@ import React from 'react';
 import Section from './section';
 import PostCard from './postCard';
 import Flex from './flex';
+import styled from 'styled-components';
 
 const ThreePosts = ({ posts, column = false }) => {
   // TODO: more responsive by not needing to refresh
@@ -19,10 +20,7 @@ const ThreePosts = ({ posts, column = false }) => {
   const postWrapper = (post, type) => {
     let postStyle;
     if (type === 'primary') {
-      postStyle = { flex: '1' }
-    }
-    else {
-      postStyle = {}
+      postStyle = { flex: '1', height: '100%' }
     }
 
     const description = column ? "" : post.frontmatter.description;
@@ -41,15 +39,15 @@ const ThreePosts = ({ posts, column = false }) => {
 
   const postListDesktop = (
     <ol style={{ listStyle: `none` }}>
-      <Flex direction="row" halign='space-between' style={{ flexWrap: 'wrap' }}>
-        <Flex style={{ height: '100%', flex: '2' }}>
+      <PostsContainer>
+        <ColumnLarge>
           {postWrapper(posts[0], 'primary')}
-        </Flex>
-        <Flex direction="column" style={{ flex: '1' }}>
+        </ColumnLarge>
+        <ColumnSmall>
           {postWrapper(posts[1], 'secondary')}
           {postWrapper(posts[2], 'secondary')}
-        </Flex>
-      </Flex>
+        </ColumnSmall>
+      </PostsContainer>
     </ol>
   )
   const postListMobile = (
@@ -64,14 +62,38 @@ const ThreePosts = ({ posts, column = false }) => {
   return (
     <Section>
       {posts.length === 0 ? noPostMessage :
-        // (mobileView || column ?
-        //   postListMobile :
-        //   postListDesktop
-        // )}
-        postListDesktop
+        (column ?
+          postListMobile :
+          postListDesktop
+        )
       }
     </Section>
   )
 }
 
+const PostsContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  @media (max-width: 800px) {
+    flex-direction: column;
+  }
+`;
+
+const ColumnLarge = styled.div`
+  flex: 2;
+  flex-flow: column;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  @media (max-width: 800px) {
+    margin-bottom: 0;
+    margin-right: 0;
+  }
+`;
+
+const ColumnSmall = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+`;
 export default ThreePosts
