@@ -40,7 +40,7 @@ const PostCard = ({ title, featuredImage, slug, date, description, ...rest }) =>
 const Card = styled.div`
   flex: 1;
   border-radius: 10px;
-  background-color: ${props => props.colors.gray};
+  background-color: var(--gray);
   padding: 10px 10px;
   margin-top: 10px; 
   margin-right: 10px;
