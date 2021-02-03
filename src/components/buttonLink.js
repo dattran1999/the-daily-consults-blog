@@ -15,7 +15,7 @@ const ButtonLink = ({ children, type, ...rest }) => {
 }
 
 const Button = styled.div`
-  width: 200px;
+  /* width: 200px; */
   height: 40px;
   border-radius: 5px;
   padding: 10px 25px;

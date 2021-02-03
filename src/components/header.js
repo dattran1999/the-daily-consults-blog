@@ -87,9 +87,11 @@ const Header = ({ title, logo }) => {
               </Link>
             </LinkWrapper>
 
-            <ButtonLink type='attention'>
-              Subscribe
+            <ButtonWrapper>
+              <ButtonLink type='attention'>
+                Subscribe
             </ButtonLink>
+            </ButtonWrapper>
           </NavBarHeader>
 
           <NavBarMain>
@@ -141,6 +143,7 @@ const NavBar = styled.header`
 
 const NavLinksWrapper = styled.div`
   width: 100%;
+  z-index: -1;
   @media (min-width: 28rem) {
     height: 100%;
   }
@@ -187,6 +190,9 @@ const NavBarHeader = styled.div`
   align-items: center;
   h1 {
     margin: 0 0;
+    @media (max-width: 800px) {
+      font-size: var(--fontSize-2);
+    }
   }
   h4 {
     margin: 0 0;
@@ -207,9 +213,15 @@ const LinkWrapper = styled.div`
 
 const ImageWrapper = styled.div`
   width: 5em;
+  min-width: 60px;
   margin-right: 1em;
-  @media (max-width: 700px) {
-    width: 60px;
+`;
+
+const ButtonWrapper = styled.div`
+  @media (max-width: 28rem) {
+    position: relative;
+    top: 82%;
+    left: 0;
   }
 `;
 export default Header
