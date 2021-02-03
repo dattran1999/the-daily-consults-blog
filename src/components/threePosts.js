@@ -55,7 +55,6 @@ const ThreePosts = ({ posts, column = false }) => {
       <Flex direction="column" valign='center'>
         {postWrapper(posts[0], 'primary')}
         {postWrapper(posts[1], 'primary')}
-        {postWrapper(posts[2], 'primary')}
       </Flex>
     </ol>
   )
