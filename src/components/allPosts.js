@@ -9,8 +9,10 @@ const AllPosts = ({ posts }) => {
   return (
     <Flex>
       <Primary>
-        <PostsByTopic topicTitle="Marketing" titleColor="yellow" posts={posts} />
-        <PostsByTopic topicTitle="Sales" titleColor="orange" posts={posts} />
+        <PostsByTopic topicTitle="Customer Insights Series" titleColor="var(--orange)" posts={posts} />
+        <PostsByTopic topicTitle="Value Creation Series" titleColor="var(--blue)" posts={posts} />
+        <PostsByTopic topicTitle="Market Roadmap Series" titleColor="var(--green)" posts={posts} />
+        <PostsByTopic topicTitle="In a Nutshell Series" titleColor="var(--fuschia)" posts={posts} />
       </Primary>
       <Secondary>
         <ButtonWrapper>

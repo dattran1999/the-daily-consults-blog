@@ -7,11 +7,7 @@ import { colors } from '../theme';
 const PostCard = ({ title, featuredImage, slug, date, description, ...rest }) => {
   return (
     <Card style={rest} colors={colors}>
-      <article
-        className="post-list-item"
-        itemScope
-        itemType="http://schema.org/Article"
-      >
+      <Article>
         {/* Header of post */}
         <header>
           {featuredImage &&
@@ -36,19 +32,39 @@ const PostCard = ({ title, featuredImage, slug, date, description, ...rest }) =>
             itemProp="description"
           />
         </section>
-      </article>
+      </Article>
     </Card>
   )
 }
 
 const Card = styled.div`
-  display: block;
+  flex: 1;
   border-radius: 10px;
   background-color: ${props => props.colors.gray};
   padding: 10px 10px;
-  margin: 10px 20px;
+  margin: 10px 0 10px 5px;
   margin-left: 0;
   width: 100%;
 `;
+
+const Article = styled.article`
+  margin-bottom: var(--spacing-8);
+  margin-top: var(--spacing-8);
+
+  p {
+    margin-bottom: var(--spacing-0);
+  }
+
+  h2 {
+    font-size: var(--fontSize-4);
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-2);
+    margin-top: var(--spacing-0);
+  }
+
+  header {
+    margin-bottom: var(--spacing-4);
+  }`
+  ;
 
 export default PostCard;

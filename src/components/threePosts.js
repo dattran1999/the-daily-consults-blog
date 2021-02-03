@@ -19,10 +19,10 @@ const ThreePosts = ({ posts, column = false }) => {
   const postWrapper = (post, type) => {
     let postStyle;
     if (type === 'primary') {
-      postStyle = { height: '100%', width: '100%' }
+      postStyle = { flex: '1' }
     }
     else {
-      postStyle = { height: '50%', width: '100%' }
+      postStyle = {}
     }
 
     const description = column ? "" : post.frontmatter.description;
@@ -41,11 +41,11 @@ const ThreePosts = ({ posts, column = false }) => {
 
   const postListDesktop = (
     <ol style={{ listStyle: `none` }}>
-      <Flex direction="row" valign='center'>
-        <Flex style={{ width: '65%', height: '100%' }}>
+      <Flex direction="row" halign='space-between' style={{ flexWrap: 'wrap' }}>
+        <Flex style={{ height: '100%', flex: '2' }}>
           {postWrapper(posts[0], 'primary')}
         </Flex>
-        <Flex direction="column" style={{ width: '35%', height: '100%' }}>
+        <Flex direction="column" style={{ flex: '1' }}>
           {postWrapper(posts[1], 'secondary')}
           {postWrapper(posts[2], 'secondary')}
         </Flex>
@@ -64,10 +64,12 @@ const ThreePosts = ({ posts, column = false }) => {
   return (
     <Section>
       {posts.length === 0 ? noPostMessage :
-        (mobileView || column ?
-          postListMobile :
-          postListDesktop
-        )}
+        // (mobileView || column ?
+        //   postListMobile :
+        //   postListDesktop
+        // )}
+        postListDesktop
+      }
     </Section>
   )
 }
