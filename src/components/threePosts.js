@@ -5,10 +5,6 @@ import Flex from './flex';
 import styled from 'styled-components';
 
 const ThreePosts = ({ posts, column = false }) => {
-  // TODO: more responsive by not needing to refresh
-  const mediaQueryList = window.matchMedia('(max-width: 28rem)');
-  let mobileView = mediaQueryList.matches;
-
   const noPostMessage = (
     <p>
       No blog posts found. Add markdown posts to "content/blog" (or the
