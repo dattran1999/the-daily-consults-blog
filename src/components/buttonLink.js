@@ -24,13 +24,16 @@ const Button = styled.div`
   justify-content: center;
   align-items: center;
   background-color: ${props =>
+    (props.type === 'attention' && 'var(--orange)') ||
     (props.type === 'primary' && props.colors.yellow) ||
     (props.type === 'secondary' && props.colors.black)
   };
   color: ${props =>
+    (props.type === 'attention' && 'var(--black)') ||
     (props.type === 'primary' && props.colors.black) ||
     (props.type === 'secondary' && props.colors.white)
   };
+  font-weight: ${props => props.type === 'attention' && 'var(--fontWeight-bold)'};
   :hover {
     cursor: pointer;
   }

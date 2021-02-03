@@ -10,9 +10,10 @@ import AllPosts from '../components/allPosts';
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
+  const logo = data.file.childImageSharp.fluid
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout location={location} title={siteTitle} logo={logo}>
       <SEO title="All posts" />
       <Hero posts={posts} />
       <Testimonials />
@@ -28,6 +29,13 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+      }
+    }
+    file(absolutePath: { regex: "/logo.jpg/" }) {
+      childImageSharp {
+        fluid {
+          ...GatsbyImageSharpFluid
+        }
       }
     }
     allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {

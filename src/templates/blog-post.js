@@ -17,7 +17,7 @@ const BlogPostTemplate = ({ data, location }) => {
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
       />
-      <Container isBlogPost={true}>
+      <Container isBlogPost={true} hasPaddingVertical={false}>
         <article
           className="blog-post"
           itemScope

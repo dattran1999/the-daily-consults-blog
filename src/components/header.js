@@ -1,16 +1,19 @@
 import React, { useState, useEffect, useRef } from "react"
 import { Link } from "gatsby"
+import Image from 'gatsby-image';
 import styled from 'styled-components';
 
 import { colors } from '../theme';
 import Container from "./container";
+import ButtonLink from './buttonLink';
+import Flex from './flex';
 
-const Header = ({ title }) => {
+const Header = ({ title, logo }) => {
   const links = [
-    { title: title, to: '/' },
-    { title: 'Posts', to: '/' },
-    { title: 'Book', to: '/' },
-    { title: 'More', to: '/' },
+    { title: 'Customer Insights Series', to: '/' },
+    { title: 'Value Creation Series', to: '/' },
+    { title: 'Market Roadmap Series', to: '/' },
+    { title: 'In A Nutshell Series', to: '/' },
   ]
 
   // handle scrolling
@@ -37,7 +40,9 @@ const Header = ({ title }) => {
   }, [showNavBar, scrollPos])
 
   const NavLinks = links.map((link, index) => (
-    <Link key={index} to={link.to}>{link.title}</Link>
+    <LinkWrapper>
+      <Link key={index} to={link.to}>{link.title}</Link>
+    </LinkWrapper>
   ))
 
   // hamburger menu handler
@@ -54,31 +59,62 @@ const Header = ({ title }) => {
     }
   }
 
+  function getDate() {
+    const dateObj = new Date();
+    const month = String(dateObj.getMonth() + 1).padStart(2, '0');
+    const day = String(dateObj.getDate()).padStart(2, '0');
+    const year = dateObj.getFullYear();
+    const output = `${day}/${month}/${year}`;
+    return output;
+  }
+
   return (
     <Transition>
       <NavBar className={showNavBar ? 'active' : 'hidden'} colors={colors}>
         <Container hasPaddingVertical={false} style={{ height: '100%' }}>
-          <HamburgerMenuWrapper onClick={hamburgerClick}>
-            <HamburgerMenu>
-              <span></span>
-              <span></span>
-              <span></span>
-            </HamburgerMenu>
-            <NavLinksWrapper ref={navLinksRef} colors={colors}>
+          <NavBarHeader>
+            <LinkWrapper>
+              <Link to='/'>
+                <Flex direction='row' valign='center'>
+                  <ImageWrapper>
+                    <Image fluid={logo} alt="logo" />
+                  </ImageWrapper>
+                  <Flex direction='column'>
+                    <h1>{title}</h1>
+                    <h4>{getDate()}</h4>
+                  </Flex>
+                </Flex>
+              </Link>
+            </LinkWrapper>
+
+            <ButtonLink type='attention'>
+              Subscribe
+            </ButtonLink>
+          </NavBarHeader>
+
+          <NavBarMain>
+            <HamburgerMenuWrapper onClick={hamburgerClick}>
+              <HamburgerMenu>
+                <span></span>
+                <span></span>
+                <span></span>
+              </HamburgerMenu>
+              <NavLinksWrapper ref={navLinksRef} colors={colors}>
+                {NavLinks}
+              </NavLinksWrapper>
+            </HamburgerMenuWrapper>
+
+            <NavLinksWrapper colors={colors}>
               {NavLinks}
             </NavLinksWrapper>
-          </HamburgerMenuWrapper>
-
-          <NavLinksWrapper colors={colors}>
-            {NavLinks}
-          </NavLinksWrapper>
+          </NavBarMain>
         </Container>
       </NavBar>
     </Transition>
   )
 }
 
-const NAV_BAR_HEIGHT = '3rem';
+const NAV_BAR_HEIGHT = '10rem';
 
 const Transition = styled.div`
   .active {
@@ -140,6 +176,40 @@ const HamburgerMenuWrapper = styled.div`
   align-items: center;
   @media (min-width: 28rem) {
     display: none;
+  }
+`;
+
+const NavBarHeader = styled.div`
+  height: 60%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  h1 {
+    margin: 0 0;
+  }
+  h4 {
+    margin: 0 0;
+  }
+`;
+
+const NavBarMain = styled.div`
+  height: 40%;
+  display: flex;
+`;
+
+const LinkWrapper = styled.div`
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+`;
+
+const ImageWrapper = styled.div`
+  width: 5em;
+  margin-right: 1em;
+  @media (max-width: 700px) {
+    width: 60px;
   }
 `;
 export default Header

@@ -11,7 +11,7 @@ const Hero = ({ posts }) => {
         <PostsByTopic topicTitle="Recently Upload" titleColor="black" posts={posts} />
       </Primary>
       <Secondary>
-        <PostsByTopic topicTitle="Popular Posts" titleColor="black" posts={posts} column={true} />
+        <PostsByTopic topicTitle="Popular" titleColor="black" posts={posts} column={true} />
       </Secondary>
     </Flex>
   )

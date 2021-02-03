@@ -4,11 +4,11 @@ import Header from './header';
 import Footer from './footer';
 import Container from './container';
 
-const Layout = ({ title, children }) => {
+const Layout = ({ title, children, logo }) => {
 
   return (
     <>
-      <Header title={title} />
+      <Header title={title} logo={logo} />
       <Container>
         <main>{children}</main>
       </Container>
