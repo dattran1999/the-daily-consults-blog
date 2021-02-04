@@ -51,10 +51,10 @@ const Header = ({ title, logo }) => {
   const hamburgerClick = () => {
     setHamburgerMenuOpened(!hamburgerMenuOpened);
     if (hamburgerMenuOpened) {
-      navLinksRef.current.classList.add('hidden');
+      navLinksRef.current.classList.add('nav-links--hidden');
       navLinksRef.current.classList.remove('active');
     } else {
-      navLinksRef.current.classList.remove('hidden');
+      navLinksRef.current.classList.remove('nav-links--hidden');
       navLinksRef.current.classList.add('active');
     }
   }
@@ -117,6 +117,7 @@ const Header = ({ title, logo }) => {
 }
 
 const NAV_BAR_HEIGHT = '10rem';
+const NAV_BAR_BREAKPOINT = '900px';
 
 const Transition = styled.div`
   .active {
@@ -127,6 +128,10 @@ const Transition = styled.div`
     visibility: hidden;
     transition: all 200ms ease-out;
     transform: translate(0, -100%);
+  }
+  .nav-links--hidden {
+    visibility: hidden;
+    transition: all 200ms ease-out;
   }
 `;
 
@@ -144,20 +149,22 @@ const NavBar = styled.header`
 const NavLinksWrapper = styled.div`
   width: 100%;
   z-index: -1;
-  @media (min-width: 28rem) {
+  @media (min-width: ${NAV_BAR_BREAKPOINT}) {
     height: 100%;
   }
   display: inline-flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  @media (max-width: 28rem) {
+  @media (max-width: ${NAV_BAR_BREAKPOINT}) {
     /* hidden by default */
     visibility: hidden;
     position: absolute;
     top: ${NAV_BAR_HEIGHT};
     left: 0;
+    height: calc(50vh - ${NAV_BAR_HEIGHT});
     flex-direction: column;
+    justify-content: space-evenly;
     background-color: ${props => props.colors.yellow};
   }
 `;
@@ -177,7 +184,7 @@ const HamburgerMenuWrapper = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
-  @media (min-width: 28rem) {
+  @media (min-width: ${NAV_BAR_BREAKPOINT}) {
     display: none;
   }
 `;
@@ -218,7 +225,7 @@ const ImageWrapper = styled.div`
 `;
 
 const ButtonWrapper = styled.div`
-  @media (max-width: 28rem) {
+  @media (max-width: ${NAV_BAR_BREAKPOINT}) {
     position: relative;
     top: 82%;
     left: 0;
