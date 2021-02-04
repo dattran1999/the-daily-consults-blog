@@ -218,6 +218,9 @@ const LinkWrapper = styled.div`
   a {
     text-decoration: none;
     color: inherit;
+    h5 {
+      margin: 0 0;
+    }
   }
 `;
 
