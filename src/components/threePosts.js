@@ -21,11 +21,12 @@ const ThreePosts = ({ posts, column = false }) => {
 
     const description = column ? "" : post.frontmatter.description;
 
+    console.log(post.frontmatter.featuredImage)
     return (
       <PostCard
         style={postStyle}
         title={post.frontmatter.title}
-        featureImage={post.frontmatter.featureImage}
+        featuredImage={post.frontmatter.featuredImage}
         slug={post.fields.slug}
         date={post.frontmatter.date}
         description={description}
@@ -40,7 +41,9 @@ const ThreePosts = ({ posts, column = false }) => {
           {postWrapper(posts[0], 'primary')}
         </ColumnLarge>
         <ColumnSmall>
-          {postWrapper(posts[1], 'secondary')}
+          <FirstPost>
+            {postWrapper(posts[1], 'secondary')}
+          </FirstPost>
           {postWrapper(posts[2], 'secondary')}
         </ColumnSmall>
       </PostsContainer>
@@ -49,7 +52,9 @@ const ThreePosts = ({ posts, column = false }) => {
   const postListMobile = (
     <ol style={{ listStyle: `none` }}>
       <Flex direction="column" valign='center'>
-        {postWrapper(posts[0], 'primary')}
+        <FirstPost>
+          {postWrapper(posts[0], 'primary')}
+        </FirstPost>
         {postWrapper(posts[1], 'primary')}
       </Flex>
     </ol>
@@ -80,9 +85,12 @@ const ColumnLarge = styled.div`
   flex-flow: column;
   margin-bottom: 10px;
   margin-right: 10px;
+  border-right: 1px solid var(--dark-gray);
   @media (max-width: 800px) {
     margin-bottom: 0;
     margin-right: 0;
+    border-right: none;
+    border-bottom: 1px solid var(--dark-gray);
   }
 `;
 
@@ -90,5 +98,9 @@ const ColumnSmall = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
+`;
+
+const FirstPost = styled.div`
+  border-bottom: 1px solid var(--dark-gray);
 `;
 export default ThreePosts

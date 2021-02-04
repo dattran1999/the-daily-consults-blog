@@ -10,11 +10,13 @@ const PostCard = ({ title, featuredImage, slug, date, description, ...rest }) =>
       <Article>
         {/* Header of post */}
         <header>
-          {featuredImage &&
-            <Image
-              fluid={featuredImage.src.childImageSharp.fluid}
-              alt={featuredImage.alt} />
-          }
+          <ImageWrapper>
+            {featuredImage &&
+              <Image
+                fluid={featuredImage.src.childImageSharp.fluid}
+                alt={featuredImage.alt} />
+            }
+          </ImageWrapper>
           <h2>
             <Link to={slug} itemProp="url">
               <span itemProp="headline">{title}</span>
@@ -39,11 +41,8 @@ const PostCard = ({ title, featuredImage, slug, date, description, ...rest }) =>
 
 const Card = styled.div`
   flex: 1;
-  border-radius: 10px;
-  background-color: var(--gray);
-  padding: 10px 10px;
-  margin-top: 10px; 
-  margin-right: 10px;
+  margin-top: 20px; 
+  margin-right: 20px;
   width: 100%;
 `;
 
@@ -64,7 +63,11 @@ const Article = styled.article`
 
   header {
     margin-bottom: var(--spacing-4);
-  }`
-  ;
+  }
+`;
+
+const ImageWrapper = styled.div`
+  margin-bottom: var(--spacing-4);
+`;
 
 export default PostCard;

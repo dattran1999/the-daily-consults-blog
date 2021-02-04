@@ -19,6 +19,7 @@ const Hero = ({ posts }) => {
 
 const Primary = styled.div`
   flex: 5;
+  padding-right: 10px;
   @media (min-width: 28em) {
     margin-right: 5em;
   }
