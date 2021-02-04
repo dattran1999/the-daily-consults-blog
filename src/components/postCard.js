@@ -11,11 +11,9 @@ const PostCard = ({ title, featuredImage, slug, date, description, ...rest }) =>
         {/* Header of post */}
         <header>
           <ImageWrapper>
-            {featuredImage &&
-              <Image
-                fluid={featuredImage.src.childImageSharp.fluid}
-                alt={featuredImage.alt} />
-            }
+            <Image
+              fluid={featuredImage?.src?.childImageSharp.fluid}
+              alt={featuredImage?.alt} />
           </ImageWrapper>
           <h2>
             <Link to={slug} itemProp="url">
