@@ -39,11 +39,6 @@ const Header = ({ title, logo }) => {
     }
   }, [showNavBar, scrollPos])
 
-  const NavLinks = links.map((link, index) => (
-    <LinkWrapper>
-      <Link key={index} to={link.to}>{link.title}</Link>
-    </LinkWrapper>
-  ))
 
   // hamburger menu handler
   const navLinksRef = useRef();
@@ -102,12 +97,20 @@ const Header = ({ title, logo }) => {
                 <span></span>
               </HamburgerMenu>
               <NavLinksWrapper ref={navLinksRef} colors={colors}>
-                {NavLinks}
+                {links.map((link, index) => (
+                  <LinkWrapper>
+                    <Link key={index} to={link.to}><h4>{link.title}</h4></Link>
+                  </LinkWrapper>
+                ))}
               </NavLinksWrapper>
             </HamburgerMenuWrapper>
 
             <NavLinksWrapper colors={colors}>
-              {NavLinks}
+              {links.map((link, index) => (
+                <LinkWrapper>
+                  <Link key={index} to={link.to}><h5>{link.title}</h5></Link>
+                </LinkWrapper>
+              ))}
             </NavLinksWrapper>
           </NavBarMain>
         </Container>
@@ -162,7 +165,7 @@ const NavLinksWrapper = styled.div`
     position: absolute;
     top: ${NAV_BAR_HEIGHT};
     left: 0;
-    height: calc(50vh - ${NAV_BAR_HEIGHT});
+    height: calc(60vh - ${NAV_BAR_HEIGHT});
     flex-direction: column;
     justify-content: space-evenly;
     background-color: ${props => props.colors.yellow};
