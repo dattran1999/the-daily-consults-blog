@@ -1,7 +1,8 @@
 import React from 'react';
-import PostCard from './postCard';
-import Flex from './flex';
 import styled from 'styled-components';
+
+import PostCard from '../postCard';
+import Flex from '../flex';
 
 const ThreePosts = ({ posts, column = false }) => {
   const noPostMessage = (
