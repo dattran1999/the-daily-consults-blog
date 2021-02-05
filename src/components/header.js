@@ -7,6 +7,7 @@ import { colors } from '../theme';
 import Container from "./container";
 import ButtonLink from './buttonLink';
 import Flex from './flex';
+import { MdSearch } from 'react-icons/md';
 
 import { ModalContext } from '../context/modal';
 
@@ -75,7 +76,7 @@ const Header = ({ title, logo }) => {
       <NavBar className={showNavBar ? 'active' : 'hidden'} colors={colors}>
         <Container hasPaddingVertical={false} style={{ height: '100%' }}>
           <NavBarHeader>
-            <LinkWrapper>
+            <LogoWrapper>
               <Link to='/'>
                 <Flex direction='row' valign='center'>
                   <ImageWrapper>
@@ -87,13 +88,16 @@ const Header = ({ title, logo }) => {
                   </Flex>
                 </Flex>
               </Link>
-            </LinkWrapper>
+            </LogoWrapper>
 
-            <ButtonWrapper onClick={handleSubscribe}>
-              <ButtonLink type='attention'>
-                Subscribe
-              </ButtonLink>
-            </ButtonWrapper>
+            <ButtonsWrapper valign='center'>
+              <SearchButton />
+              <div onClick={handleSubscribe}>
+                <ButtonLink type='attention'>
+                  Subscribe
+                </ButtonLink>
+              </div>
+            </ButtonsWrapper>
           </NavBarHeader>
 
           <NavBarMain>
@@ -127,7 +131,7 @@ const Header = ({ title, logo }) => {
 }
 
 const NAV_BAR_HEIGHT = '10rem';
-const NAV_BAR_BREAKPOINT = '900px';
+const NAV_BAR_BREAKPOINT = '1000px';
 
 const Transition = styled.div`
   .active {
@@ -158,7 +162,7 @@ const NavBar = styled.header`
 
 const NavLinksWrapper = styled.div`
   width: 100%;
-  z-index: -1;
+  /* z-index: -1; */
   @media (min-width: ${NAV_BAR_BREAKPOINT}) {
     height: 100%;
   }
@@ -228,6 +232,16 @@ const LinkWrapper = styled.div`
     h5 {
       margin: 0 0;
     }
+    h4 {
+      margin: 0 0;
+    }
+  }
+`;
+
+const LogoWrapper = styled(LinkWrapper)`
+  @media (max-width: ${NAV_BAR_BREAKPOINT}) {
+    position: absolute;
+    width: 100vw;
   }
 `;
 
@@ -237,11 +251,18 @@ const ImageWrapper = styled.div`
   margin-right: 1em;
 `;
 
-const ButtonWrapper = styled.div`
+const ButtonsWrapper = styled(Flex)`
   @media (max-width: ${NAV_BAR_BREAKPOINT}) {
     position: relative;
     top: 82%;
-    left: 0;
+    margin-left: auto;
+  }
+`;
+const SearchButton = styled(MdSearch)`
+  margin-right: 2rem;
+  font-size: var(--fontSize-4);
+  @media (max-width: ${NAV_BAR_BREAKPOINT}) {
+    margin-right: 1.2rem;
   }
 `;
 export default Header
