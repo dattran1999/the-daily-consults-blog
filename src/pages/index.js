@@ -6,11 +6,15 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Hero from '../components/hero';
 import AllPosts from '../components/allPosts';
+import ModalWrapper from "../components/modal"
+import Subcribe from "../components/subcribe"
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
   const logo = data.file.childImageSharp.fluid
+
+  const [showSubscribeModal, setShowSubscribeModal] = React.useState(false);
 
   return (
     <Layout location={location} title={siteTitle} logo={logo}>
@@ -18,6 +22,10 @@ const BlogIndex = ({ data, location }) => {
       <Hero posts={posts} />
       <Testimonials />
       <AllPosts posts={posts} />
+      <button onClick={() => setShowSubscribeModal(true)}>show</button>
+      <ModalWrapper backgroundColor={'var(--yellow)'} showModal={showSubscribeModal} setShowModal={setShowSubscribeModal}>
+        <Subcribe title={siteTitle} />
+      </ModalWrapper>
     </Layout>
   )
 }
