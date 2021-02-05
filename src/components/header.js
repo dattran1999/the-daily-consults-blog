@@ -9,7 +9,7 @@ import ButtonLink from './buttonLink';
 import Flex from './flex';
 import { MdSearch } from 'react-icons/md';
 
-import { ModalContext } from '../context/modal';
+import { SubscribeModalContext } from '../context/modal';
 
 const Header = ({ title, logo }) => {
   const links = [
@@ -19,7 +19,7 @@ const Header = ({ title, logo }) => {
     { title: 'In A Nutshell Series', to: '/' },
   ]
 
-  const [state, dispatch] = React.useContext(ModalContext);
+  const [state, dispatch] = React.useContext(SubscribeModalContext);
   const handleSubscribe = () => {
     dispatch({ type: 'toggle_button' });
   }

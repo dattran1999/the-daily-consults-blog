@@ -1,17 +1,17 @@
 import React from 'react';
 import { reducer, initialState } from './reducer';
 
-export const ModalContext = React.createContext({
+export const SubscribeModalContext = React.createContext({
   state: initialState,
   dispatch: () => null
 })
 
-export const ModalProvider = ({ children }) => {
+export const SubscribeModalProvider = ({ children }) => {
   const [state, dispatch] = React.useReducer(reducer, initialState)
 
   return (
-    <ModalContext.Provider value={[state, dispatch]}>
+    <SubscribeModalContext.Provider value={[state, dispatch]}>
       { children}
-    </ModalContext.Provider>
+    </SubscribeModalContext.Provider>
   )
 }

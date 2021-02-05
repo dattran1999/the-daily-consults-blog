@@ -5,10 +5,10 @@ import ButtonLink from './buttonLink';
 import Flex from './flex';
 import PostsByTopic from './postsByTopic';
 
-import { ModalContext } from '../context/modal';
+import { SubscribeModalContext } from '../context/modal';
 
 const AllPosts = ({ posts }) => {
-  const [state, dispatch] = React.useContext(ModalContext);
+  const [state, dispatch] = React.useContext(SubscribeModalContext);
   const handleSubscribe = () => {
     dispatch({ type: 'toggle_button' });
   }

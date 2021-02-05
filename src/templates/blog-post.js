@@ -7,7 +7,7 @@ import SEO from "../components/seo"
 import Container from '../components/container';
 import SubscribeModal from '../components/subcribeModal';
 
-import { ModalProvider } from '../context/modal';
+import { SubscribeModalProvider } from '../context/modal';
 
 const BlogPostTemplate = ({ data, location }) => {
   const post = data.markdownRemark
@@ -15,7 +15,7 @@ const BlogPostTemplate = ({ data, location }) => {
   const { previous, next } = data
 
   return (
-    <ModalProvider>
+    <SubscribeModalProvider>
       <Layout location={location} title={siteTitle}>
         <SEO
           title={post.frontmatter.title}
@@ -69,7 +69,7 @@ const BlogPostTemplate = ({ data, location }) => {
         </Container>
       </Layout>
       <SubscribeModal title={siteTitle} />
-    </ModalProvider>
+    </SubscribeModalProvider>
   )
 }
 

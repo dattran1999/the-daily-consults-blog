@@ -8,7 +8,7 @@ import Hero from '../components/hero';
 import AllPosts from '../components/allPosts';
 import SubcribeModal from "../components/subcribeModal";
 
-import { ModalProvider } from '../context/modal';
+import { SubscribeModalProvider } from '../context/modal';
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
@@ -17,7 +17,7 @@ const BlogIndex = ({ data, location }) => {
 
 
   return (
-    <ModalProvider>
+    <SubscribeModalProvider>
       <Layout location={location} title={siteTitle} logo={logo}>
         <SEO title="All posts" />
         <Hero posts={posts} />
@@ -25,7 +25,7 @@ const BlogIndex = ({ data, location }) => {
         <AllPosts posts={posts} />
         <SubcribeModal title={siteTitle} />
       </Layout>
-    </ModalProvider>
+    </SubscribeModalProvider>
   )
 }
 
