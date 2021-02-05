@@ -4,8 +4,13 @@ import styled from 'styled-components';
 import Modal from 'react-modal';
 import { MdClose } from 'react-icons/md';
 import Flex from './flex';
+import { ModalContext } from '../context/modal';
 
-const ModalWrapper = ({ showModal, setShowModal, children, backgroundColor }) => {
+Modal.setAppElement('#___gatsby');
+
+const ModalWrapper = ({ children, backgroundColor }) => {
+  const [state, dispatch] = React.useContext(ModalContext);
+
   const customStyles = {
     content: {
       height: '50vh',
@@ -16,11 +21,11 @@ const ModalWrapper = ({ showModal, setShowModal, children, backgroundColor }) =>
     }
   }
   const closeModal = () => {
-    setShowModal(false);
+    dispatch({ type: 'toggle_button' })
   }
   return (
     <Modal
-      isOpen={showModal}
+      isOpen={state.active}
       onRequestClose={closeModal}
       style={customStyles}
     >

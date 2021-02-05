@@ -5,13 +5,13 @@ import ButtonLink from './buttonLink';
 import Flex from './flex';
 import ModalWrapper from './modalWrapper';
 
-const SubcribeModal = ({ title, showModal, setShowModal }) => {
+const SubcribeModal = ({ title }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log('submit');
   }
   return (
-    <ModalWrapper backgroundColor={'var(--yellow)'} showModal={showModal} setShowModal={setShowModal}>
+    <ModalWrapper backgroundColor={'var(--yellow)'}>
       <Container>
         <Flex direction='column' halign='center'>
           <h3>{title}</h3>

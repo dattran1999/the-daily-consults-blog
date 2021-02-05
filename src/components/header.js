@@ -8,6 +8,8 @@ import Container from "./container";
 import ButtonLink from './buttonLink';
 import Flex from './flex';
 
+import { ModalContext } from '../context/modal';
+
 const Header = ({ title, logo }) => {
   const links = [
     { title: 'Customer Insights Series', to: '/' },
@@ -15,6 +17,11 @@ const Header = ({ title, logo }) => {
     { title: 'Market Roadmap Series', to: '/' },
     { title: 'In A Nutshell Series', to: '/' },
   ]
+
+  const [state, dispatch] = React.useContext(ModalContext);
+  const handleSubscribe = () => {
+    dispatch({ type: 'toggle_button' });
+  }
 
   // handle scrolling
   const [showNavBar, setShowNavBar] = useState(true);
@@ -82,10 +89,10 @@ const Header = ({ title, logo }) => {
               </Link>
             </LinkWrapper>
 
-            <ButtonWrapper>
+            <ButtonWrapper onClick={handleSubscribe}>
               <ButtonLink type='attention'>
                 Subscribe
-            </ButtonLink>
+              </ButtonLink>
             </ButtonWrapper>
           </NavBarHeader>
 

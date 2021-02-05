@@ -5,7 +5,14 @@ import ButtonLink from './buttonLink';
 import Flex from './flex';
 import PostsByTopic from './postsByTopic';
 
+import { ModalContext } from '../context/modal';
+
 const AllPosts = ({ posts }) => {
+  const [state, dispatch] = React.useContext(ModalContext);
+  const handleSubscribe = () => {
+    dispatch({ type: 'toggle_button' });
+  }
+
   return (
     <Flex>
       <Primary>
@@ -15,7 +22,7 @@ const AllPosts = ({ posts }) => {
         <PostsByTopic topicTitle="In a Nutshell Series" titleColor="var(--fuschia)" posts={posts} />
       </Primary>
       <Secondary>
-        <ButtonWrapper>
+        <ButtonWrapper onClick={handleSubscribe}>
           <ButtonLink type='primary'>Subscribe</ButtonLink>
         </ButtonWrapper>
         <ButtonWrapper>
