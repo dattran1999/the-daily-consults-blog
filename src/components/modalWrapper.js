@@ -13,9 +13,11 @@ const ModalWrapper = ({ children, backgroundColor }) => {
 
   const customStyles = {
     content: {
-      height: '50vh',
-      width: '50vw',
+      height: '60vh',
+      width: '70vw',
+      maxWidth: '900px',
       margin: 'auto',
+      marginTop: '8rem',
       backgroundColor: backgroundColor,
       overflow: 'hidden'
     }
@@ -41,7 +43,7 @@ const CloseModalButton = styled(MdClose)`
   cursor: pointer;
   position: absolute;
   top: 3%;
-  left: 96%;
+  right: 4%;
 `;
 
 export default ModalWrapper;
