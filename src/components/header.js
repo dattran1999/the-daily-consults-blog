@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react"
+import React, { useState, useEffect, useRef, useContext } from "react"
 import { Link } from "gatsby"
 import Image from 'gatsby-image';
 import styled from 'styled-components';
@@ -21,7 +21,7 @@ const Header = ({ title, logo }) => {
   ]
 
   // subscribe modal
-  const [state, dispatch] = React.useContext(SubscribeModalContext);
+  const [state, dispatch] = useContext(SubscribeModalContext);
   const handleSubscribe = () => {
     dispatch({ type: 'toggle_button' });
   }
@@ -34,7 +34,7 @@ const Header = ({ title, logo }) => {
 
   // handle scrolling
   const [showNavBar, setShowNavBar] = useState(true);
-  const [scrollPos, setScrollPos] = useState(document.body.getBoundingClientRect().top);
+  const [scrollPos, setScrollPos] = useState(0);
 
   const handleScroll = () => {
     // show navbar only when scrolling up
@@ -105,7 +105,7 @@ const Header = ({ title, logo }) => {
                 <div onClick={handleSubscribe}>
                   <ButtonLink type='attention'>
                     Subscribe
-                </ButtonLink>
+                  </ButtonLink>
                 </div>
               </ButtonsWrapper>
             </NavBarHeader>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 
 import ButtonLink from './buttonLink';
@@ -8,7 +8,7 @@ import PostsByTopic from './postsByTopic';
 import { SubscribeModalContext } from '../context/modal';
 
 const AllPosts = ({ posts }) => {
-  const [state, dispatch] = React.useContext(SubscribeModalContext);
+  const [state, dispatch] = useContext(SubscribeModalContext);
   const handleSubscribe = () => {
     dispatch({ type: 'toggle_button' });
   }
