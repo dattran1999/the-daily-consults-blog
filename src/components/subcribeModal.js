@@ -5,13 +5,20 @@ import ButtonLink from './buttonLink';
 import Flex from './flex';
 import ModalWrapper from './modalWrapper';
 
+import { SubscribeModalContext } from '../context/modal';
+
 const SubcribeModal = ({ title }) => {
+  const [state, dispatch] = React.useContext(SubscribeModalContext);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log('submit');
   }
+  const closeModal = () => {
+    dispatch({ type: 'toggle_button' });
+  }
   return (
-    <ModalWrapper backgroundColor={'var(--yellow)'}>
+    <ModalWrapper backgroundColor={'var(--yellow)'} isOpen={state.active} closeModal={closeModal}>
       <Container>
         <Flex direction='column' halign='center'>
           <h3>{title}</h3>

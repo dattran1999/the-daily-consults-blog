@@ -19,10 +19,14 @@ const Header = ({ title, logo }) => {
     { title: 'In A Nutshell Series', to: '/' },
   ]
 
+  // subscribe modal
   const [state, dispatch] = React.useContext(SubscribeModalContext);
   const handleSubscribe = () => {
     dispatch({ type: 'toggle_button' });
   }
+
+  // search modal
+  const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
 
   // handle scrolling
   const [showNavBar, setShowNavBar] = useState(true);
