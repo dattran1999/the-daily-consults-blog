@@ -8,6 +8,7 @@ import Container from "./container";
 import ButtonLink from './buttonLink';
 import Flex from './flex';
 import { MdSearch } from 'react-icons/md';
+import SearchModal from './searchModal';
 
 import { SubscribeModalContext } from '../context/modal';
 
@@ -27,6 +28,9 @@ const Header = ({ title, logo }) => {
 
   // search modal
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
+  const closeSearchModal = () => {
+    setIsSearchModalOpen(false);
+  }
 
   // handle scrolling
   const [showNavBar, setShowNavBar] = useState(true);
@@ -76,61 +80,64 @@ const Header = ({ title, logo }) => {
   }
 
   return (
-    <Transition>
-      <NavBar className={showNavBar ? 'active' : 'hidden'} colors={colors}>
-        <Container hasPaddingVertical={false} style={{ height: '100%' }}>
-          <NavBarHeader>
-            <LogoWrapper>
-              <Link to='/'>
-                <Flex direction='row' valign='center'>
-                  <ImageWrapper>
-                    <Image fluid={logo} alt="logo" />
-                  </ImageWrapper>
-                  <Flex direction='column'>
-                    <h1>{title}</h1>
-                    <h4>{getDate()}</h4>
+    <>
+      <SearchModal isOpen={isSearchModalOpen} closeModal={closeSearchModal} />
+      <Transition>
+        <NavBar className={showNavBar ? 'active' : 'hidden'} colors={colors}>
+          <Container hasPaddingVertical={false} style={{ height: '100%' }}>
+            <NavBarHeader>
+              <LogoWrapper>
+                <Link to='/'>
+                  <Flex direction='row' valign='center'>
+                    <ImageWrapper>
+                      <Image fluid={logo} alt="logo" />
+                    </ImageWrapper>
+                    <Flex direction='column'>
+                      <h1>{title}</h1>
+                      <h4>{getDate()}</h4>
+                    </Flex>
                   </Flex>
-                </Flex>
-              </Link>
-            </LogoWrapper>
+                </Link>
+              </LogoWrapper>
 
-            <ButtonsWrapper valign='center'>
-              <SearchButton />
-              <div onClick={handleSubscribe}>
-                <ButtonLink type='attention'>
-                  Subscribe
+              <ButtonsWrapper valign='center'>
+                <SearchButton onClick={() => setIsSearchModalOpen(true)} />
+                <div onClick={handleSubscribe}>
+                  <ButtonLink type='attention'>
+                    Subscribe
                 </ButtonLink>
-              </div>
-            </ButtonsWrapper>
-          </NavBarHeader>
+                </div>
+              </ButtonsWrapper>
+            </NavBarHeader>
 
-          <NavBarMain>
-            <HamburgerMenuWrapper onClick={hamburgerClick}>
-              <HamburgerMenu>
-                <span></span>
-                <span></span>
-                <span></span>
-              </HamburgerMenu>
-              <NavLinksWrapper ref={navLinksRef} colors={colors}>
+            <NavBarMain>
+              <HamburgerMenuWrapper onClick={hamburgerClick}>
+                <HamburgerMenu>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </HamburgerMenu>
+                <NavLinksWrapper ref={navLinksRef} colors={colors}>
+                  {links.map((link, index) => (
+                    <LinkWrapper>
+                      <Link key={index} to={link.to}><h4>{link.title}</h4></Link>
+                    </LinkWrapper>
+                  ))}
+                </NavLinksWrapper>
+              </HamburgerMenuWrapper>
+
+              <NavLinksWrapper colors={colors}>
                 {links.map((link, index) => (
                   <LinkWrapper>
-                    <Link key={index} to={link.to}><h4>{link.title}</h4></Link>
+                    <Link key={index} to={link.to}><h5>{link.title}</h5></Link>
                   </LinkWrapper>
                 ))}
               </NavLinksWrapper>
-            </HamburgerMenuWrapper>
-
-            <NavLinksWrapper colors={colors}>
-              {links.map((link, index) => (
-                <LinkWrapper>
-                  <Link key={index} to={link.to}><h5>{link.title}</h5></Link>
-                </LinkWrapper>
-              ))}
-            </NavLinksWrapper>
-          </NavBarMain>
-        </Container>
-      </NavBar>
-    </Transition>
+            </NavBarMain>
+          </Container>
+        </NavBar>
+      </Transition>
+    </>
   )
 }
 

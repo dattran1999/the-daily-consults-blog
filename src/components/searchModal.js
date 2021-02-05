@@ -1,39 +1,45 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import ButtonLink from './buttonLink';
+import { MdSearch } from 'react-icons/md'
 import Flex from './flex';
 import ModalWrapper from './modalWrapper';
 
-import { SubscribeModalContext } from '../context/modal';
-
-const SearchModal = () => {
-  const [state, dispatch] = React.useContext(SubscribeModalContext);
-
-  console.log(state)
+const SearchModal = ({ isOpen, closeModal }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log('submit');
   }
-  const closeModal = () => {
-    dispatch({ type: 'toggle_button' });
-  }
   return (
-    <ModalWrapper backgroundColor={'var(--yellow)'} shouldOpen={state.active} closeModal={closeModal}>
-      <Container>
-        <Flex direction='column' halign='center'>
-          <form onSubmit={handleSubmit}>
-            <input type='text' name='search' placeholder='Type anything in here' required></input>
-            <ButtonLink onClick={handleSubmit} type='attention'>Subscribe</ButtonLink>
-          </form>
-        </Flex>
-      </Container>
+    <ModalWrapper backgroundColor={'var(--white)'} isOpen={isOpen} closeModal={closeModal}>
+      <Flex direction='column' halign='center'>
+        <Form onSubmit={handleSubmit}>
+          <Flex direction='row' valign='center' halign='space-between'>
+            <Input type='text' name='search' placeholder='Search' autocomplete='off' autofocus />
+            <SearchButton onClick={handleSubmit} />
+          </Flex>
+        </Form>
+      </Flex>
     </ModalWrapper>
   )
 }
 
-const Container = styled.div`
-  background-color: var(--yellow);
+const Form = styled.form`
+  padding-bottom: 5px;
+  border-bottom: 1px solid var(--dark-gray);
+  text-align: center;
+  font-size: var(--fontSize-2);
+  position: relative;
+`;
+
+const Input = styled.input`
+  background: none;
+  border: none;
+  outline: none;
+`;
+
+const SearchButton = styled(MdSearch)`
+  cursor: pointer;
 `;
 
 export default SearchModal;
