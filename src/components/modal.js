@@ -24,9 +24,7 @@ const ModalWrapper = ({ showModal, setShowModal, children, backgroundColor }) =>
       onRequestClose={closeModal}
       style={customStyles}
     >
-      <Flex direction="row" halign="flex-end">
-        <CloseModalButton onClick={closeModal} />
-      </Flex>
+      <CloseModalButton onClick={closeModal} />
       <Flex valign='center' halign='center' style={{ width: '100%', height: '100%' }}>
         {children}
       </Flex>
@@ -36,6 +34,9 @@ const ModalWrapper = ({ showModal, setShowModal, children, backgroundColor }) =>
 
 const CloseModalButton = styled(MdClose)`
   cursor: pointer;
+  position: absolute;
+  top: 3%;
+  left: 96%;
 `;
 
 export default ModalWrapper;
