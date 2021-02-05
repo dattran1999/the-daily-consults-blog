@@ -1,5 +1,4 @@
 import React from 'react';
-import Section from './section';
 import PostCard from './postCard';
 import Flex from './flex';
 import styled from 'styled-components';
@@ -60,14 +59,14 @@ const ThreePosts = ({ posts, column = false }) => {
     </ol>
   )
   return (
-    <Section>
+    <>
       {posts.length === 0 ? noPostMessage :
         (column ?
           postListMobile :
           postListDesktop
         )
       }
-    </Section>
+    </>
   )
 }
 

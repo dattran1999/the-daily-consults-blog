@@ -3,17 +3,21 @@ import styled from 'styled-components';
 
 import Flex from './flex';
 import PostsByTopic from './postsByTopic';
+import Section from './section';
 
 const Hero = ({ posts }) => {
   return (
-    <Flex direction="row" halign="space-around">
-      <Primary>
-        <PostsByTopic topicTitle="Recently Upload" titleColor="black" posts={posts} />
-      </Primary>
-      <Secondary>
-        <PostsByTopic topicTitle="Popular" titleColor="black" posts={posts} column={true} />
-      </Secondary>
-    </Flex>
+    <Section>
+      <Flex direction="row" halign="space-around">
+        <Primary>
+          <PostsByTopic topicTitle="Recently Upload" titleColor="black" posts={posts} />
+        </Primary>
+        <Secondary>
+          <PostsByTopic topicTitle="Popular" titleColor="black" posts={posts} column={true} />
+        </Secondary>
+      </Flex>
+    </Section>
+
   )
 }
 
