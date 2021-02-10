@@ -119,8 +119,8 @@ const Header = ({ title, logo }) => {
                 </HamburgerMenu>
                 <NavLinksWrapper ref={navLinksRef} colors={colors}>
                   {links.map((link, index) => (
-                    <LinkWrapper>
-                      <Link key={index} to={link.to}><h4>{link.title}</h4></Link>
+                    <LinkWrapper key={index}>
+                      <Link to={link.to}><h4>{link.title}</h4></Link>
                     </LinkWrapper>
                   ))}
                 </NavLinksWrapper>
@@ -128,8 +128,8 @@ const Header = ({ title, logo }) => {
 
               <NavLinksWrapper colors={colors}>
                 {links.map((link, index) => (
-                  <LinkWrapper>
-                    <Link key={index} to={link.to}><h5>{link.title}</h5></Link>
+                  <LinkWrapper key={index}>
+                    <Link to={link.to}><h5>{link.title}</h5></Link>
                   </LinkWrapper>
                 ))}
               </NavLinksWrapper>

@@ -6,11 +6,11 @@ import { colors } from '../theme';
 
 const ButtonLink = ({ children, type, ...rest }) => {
   return (
-    <Link>
+    <a>
       <Button type={type} colors={colors}>
         {children}
       </Button>
-    </Link>
+    </a>
   )
 }
 

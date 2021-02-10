@@ -85,12 +85,13 @@ const PostsContainer = styled.div`
   }
 `;
 
+const MARGIN = '1.2rem';
 const ColumnLarge = styled.div`
   flex: 2;
   flex-flow: column;
-  margin-bottom: 10px;
-  margin-right: 10px;
-  padding-right: 10px;
+  margin-bottom: ${MARGIN};
+  margin-right: ${MARGIN};
+  padding-right: ${MARGIN};
   border-right: 1px solid var(--dark-gray);
   @media (max-width: 800px) {
     margin-bottom: 0;
