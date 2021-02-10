@@ -45,7 +45,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    allMediumPost {
+    allMediumPost(sort: {fields: createdAt, order: DESC}) {
       nodes {
         title
         updatedAt(formatString: "DD/MM/YYYY")

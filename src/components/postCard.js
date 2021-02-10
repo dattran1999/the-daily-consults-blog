@@ -7,7 +7,7 @@ import { colors } from '../theme';
 const MEDIUM_CDN = 'https://miro.medium.com/max/596';
 const MEDIUM_URL = 'https://christopherdieunguyen.medium.com'
 
-const PostCard = ({ title, featuredImageId, slug, date, description, ...rest }) => {
+const PostCard = ({ type, title, featuredImageId, slug, date, description, ...rest }) => {
   return (
     <Card {...rest}>
       <Link to={`${MEDIUM_URL}/${slug}`} itemProp="url">
@@ -17,21 +17,19 @@ const PostCard = ({ title, featuredImageId, slug, date, description, ...rest }) 
             <ImageWrapper>
               <img src={`${MEDIUM_CDN}/${featuredImageId}`} style={{ width: '100%' }}></img>
             </ImageWrapper>
-            <h2>
-              <span itemProp="headline">{title}</span>
-            </h2>
+            <Heading type={type}><span itemProp="headline">{title}</span></Heading>
             <small>{date}</small>
           </header>
 
           {/* content */}
-          <section>
+          <Content type={type}>
             <p
               dangerouslySetInnerHTML={{
                 __html: description,
               }}
               itemProp="description"
             />
-          </section>
+          </Content>
         </Article>
       </Link>
     </Card>
@@ -45,6 +43,15 @@ const Card = styled.div`
   width: 100%;
 `;
 
+const Heading = styled.h2`
+  margin-bottom: var(--spacing-2);
+  margin-top: var(--spacing-0);
+  font-size: ${props => props.type === 'primary' ? 'var(--fontSize-5)' : 'var(--fontSize-2)'};
+  @media (max-width: 28rem) {
+    font-size: var(--fontSize-3);
+  }
+`;
+
 const Article = styled.article`
   margin-bottom: var(--spacing-8);
   margin-top: var(--spacing-8);
@@ -54,11 +61,7 @@ const Article = styled.article`
     margin-bottom: var(--spacing-0);
   }
 
-  h2 {
-    font-size: var(--fontSize-4);
-    color: var(--color-primary);
-    margin-bottom: var(--spacing-2);
-    margin-top: var(--spacing-0);
+  h2, h5 {
   }
 
   header {
@@ -68,6 +71,13 @@ const Article = styled.article`
 
 const ImageWrapper = styled.div`
   margin-bottom: var(--spacing-4);
+`;
+
+const Content = styled.section`
+  display: ${props => props.type === 'secondary' && 'none'};
+  @media (max-width: 28rem) {
+    display: block;
+  }
 `;
 
 export default PostCard;

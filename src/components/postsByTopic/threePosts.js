@@ -22,6 +22,7 @@ const ThreePosts = ({ posts, column = false }) => {
 
     return (
       <PostCard
+        type={type}
         style={postStyle}
         title={post?.title}
         featuredImageId={post?.virtuals.previewImage.imageId}
@@ -55,10 +56,10 @@ const ThreePosts = ({ posts, column = false }) => {
     <ol style={{ listStyle: `none` }}>
       <Flex direction="column" valign='center'>
         <FirstPost>
-          {postWrapper(posts[0], 'primary')}
+          {postWrapper(posts[0], 'secondary')}
         </FirstPost>
         {posts[1] &&
-          postWrapper(posts[1], 'primary')
+          postWrapper(posts[1], 'secondary')
         }
       </Flex>
     </ol>

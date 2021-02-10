@@ -79,7 +79,7 @@ module.exports = {
     {
       resolve: 'gatsby-source-medium',
       options: {
-        username: '@christopherdieunguyen', // Medium user name
+        username: '@christopherdieunguyen'
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
