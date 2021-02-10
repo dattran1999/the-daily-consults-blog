@@ -169,6 +169,11 @@ h6 > a {
   color: inherit;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 /* Prose */
 
 p {

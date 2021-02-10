@@ -9,31 +9,31 @@ const MEDIUM_URL = 'https://christopherdieunguyen.medium.com'
 
 const PostCard = ({ title, featuredImageId, slug, date, description, ...rest }) => {
   return (
-    <Card {...rest} colors={colors}>
-      <Article>
-        {/* Header of post */}
-        <header>
-          <ImageWrapper>
-            <img src={`${MEDIUM_CDN}/${featuredImageId}`} style={{ width: '100%' }}></img>
-          </ImageWrapper>
-          <h2>
-            <Link to={`${MEDIUM_URL}/${slug}`} itemProp="url">
+    <Card {...rest}>
+      <Link to={`${MEDIUM_URL}/${slug}`} itemProp="url">
+        <Article>
+          {/* Header of post */}
+          <header>
+            <ImageWrapper>
+              <img src={`${MEDIUM_CDN}/${featuredImageId}`} style={{ width: '100%' }}></img>
+            </ImageWrapper>
+            <h2>
               <span itemProp="headline">{title}</span>
-            </Link>
-          </h2>
-          <small>{date}</small>
-        </header>
+            </h2>
+            <small>{date}</small>
+          </header>
 
-        {/* content */}
-        <section>
-          <p
-            dangerouslySetInnerHTML={{
-              __html: description,
-            }}
-            itemProp="description"
-          />
-        </section>
-      </Article>
+          {/* content */}
+          <section>
+            <p
+              dangerouslySetInnerHTML={{
+                __html: description,
+              }}
+              itemProp="description"
+            />
+          </section>
+        </Article>
+      </Link>
     </Card>
   )
 }
@@ -48,6 +48,7 @@ const Card = styled.div`
 const Article = styled.article`
   margin-bottom: var(--spacing-8);
   margin-top: var(--spacing-8);
+  color: var(--black);
 
   p {
     margin-bottom: var(--spacing-0);
