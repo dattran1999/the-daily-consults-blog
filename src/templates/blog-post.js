@@ -9,14 +9,14 @@ import SubscribeModal from '../components/subcribeModal';
 
 import { SubscribeModalProvider } from '../context/modal';
 
-const BlogPostTemplate = ({ data, location }) => {
+const BlogPostTemplate = ({ data }) => {
   const post = data.markdownRemark
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const { previous, next } = data
 
   return (
     <SubscribeModalProvider>
-      <Layout location={location} title={siteTitle}>
+      <Layout title={siteTitle}>
         <SEO
           title={post.frontmatter.title}
           description={post.frontmatter.description || post.excerpt}

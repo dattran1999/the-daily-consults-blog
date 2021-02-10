@@ -10,7 +10,7 @@ import SubcribeModal from "../components/subcribeModal";
 
 import { SubscribeModalProvider } from '../context/modal';
 
-const BlogIndex = ({ data, location }) => {
+const BlogIndex = ({ data }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMediumPost.nodes
   const logo = data.file.childImageSharp.fluid
@@ -18,7 +18,7 @@ const BlogIndex = ({ data, location }) => {
 
   return (
     <SubscribeModalProvider>
-      <Layout location={location} title={siteTitle} logo={logo}>
+      <Layout title={siteTitle} logo={logo}>
         <SEO title="All posts" />
         <Hero posts={posts} />
         {/* <Testimonials /> */}
