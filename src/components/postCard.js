@@ -18,7 +18,6 @@ const PostCard = ({ type, title, featuredImageId, slug, date, description, ...re
               <img src={`${MEDIUM_CDN}/${featuredImageId}`} style={{ width: '100%' }}></img>
             </ImageWrapper>
             <Heading type={type}><span itemProp="headline">{title}</span></Heading>
-            <small>{date}</small>
           </header>
 
           {/* content */}
@@ -30,6 +29,7 @@ const PostCard = ({ type, title, featuredImageId, slug, date, description, ...re
               itemProp="description"
             />
           </Content>
+          <small>{date}</small>
         </Article>
       </Link>
     </Card>
@@ -78,6 +78,7 @@ const Content = styled.section`
   @media (max-width: 28rem) {
     display: block;
   }
+  margin-bottom: var(--spacing-4);
 `;
 
 export default PostCard;
