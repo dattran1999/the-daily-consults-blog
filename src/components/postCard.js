@@ -4,16 +4,19 @@ import Image from 'gatsby-image';
 import styled from 'styled-components';
 import { colors } from '../theme';
 
-const PostCard = ({ title, featuredImage, slug, date, description, ...rest }) => {
+const MEDIUM_CDN = 'https://miro.medium.com/max/596/';
+
+const PostCard = ({ title, featuredImageId, slug, date, description, ...rest }) => {
   return (
     <Card {...rest} colors={colors}>
       <Article>
         {/* Header of post */}
         <header>
           <ImageWrapper>
-            <Image
+            {/* <Image
               fluid={featuredImage?.src?.childImageSharp.fluid}
-              alt={featuredImage?.alt} />
+              alt={featuredImage?.alt} /> */}
+            <img src={`${MEDIUM_CDN}/${featuredImageId}`} style={{ width: '100%' }}></img>
           </ImageWrapper>
           <h2>
             <Link to={slug} itemProp="url">

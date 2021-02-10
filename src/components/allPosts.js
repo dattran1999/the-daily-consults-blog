@@ -13,13 +13,25 @@ const AllPosts = ({ posts }) => {
     dispatch({ type: 'toggle_button' });
   }
 
+  const filerPost = (post, name) => {
+    for (const tag of post.virtuals.tags) {
+      if (tag.name.toLowerCase() === name.toLowerCase()) {
+        return true;
+      }
+    }
+    return false;
+  }
+  const CustomerInsightsPosts = posts.filter(post => filerPost(post, "Customer Insight"));
+  const ValueCreationPosts = posts.filter(post => filerPost(post, "Value Creation"));
+  const MarketRoadmapPosts = posts.filter(post => filerPost(post, "Marketing"));
+  const InANutShellPosts = posts.filter(post => filerPost(post, "Strategy"));
   return (
     <Flex>
       <Primary>
-        <PostsByTopic topicTitle="Customer Insights Series" titleColor="var(--orange)" posts={posts} />
-        <PostsByTopic topicTitle="Value Creation Series" titleColor="var(--blue)" posts={posts} />
-        <PostsByTopic topicTitle="Market Roadmap Series" titleColor="var(--green)" posts={posts} />
-        <PostsByTopic topicTitle="In a Nutshell Series" titleColor="var(--fuschia)" posts={posts} />
+        <PostsByTopic topicTitle="Customer Insights Series" titleColor="var(--orange)" posts={CustomerInsightsPosts} />
+        <PostsByTopic topicTitle="Value Creation Series" titleColor="var(--blue)" posts={ValueCreationPosts} />
+        <PostsByTopic topicTitle="Market Roadmap Series" titleColor="var(--green)" posts={MarketRoadmapPosts} />
+        <PostsByTopic topicTitle="In a Nutshell Series" titleColor="var(--fuschia)" posts={InANutShellPosts} />
       </Primary>
       <Secondary>
         <ButtonWrapper onClick={handleSubscribe}>

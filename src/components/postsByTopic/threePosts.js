@@ -4,12 +4,11 @@ import styled from 'styled-components';
 import PostCard from '../postCard';
 import Flex from '../flex';
 
+// Column is whether to display the pictures in column form
 const ThreePosts = ({ posts, column = false }) => {
   const noPostMessage = (
     <p>
-      No blog posts found. Add markdown posts to "content/blog" (or the
-      directory you specified for the "gatsby-source-filesystem" plugin in
-      gatsby-config.js).
+      This section is currently empty 😀
     </p>
   )
 
@@ -19,16 +18,15 @@ const ThreePosts = ({ posts, column = false }) => {
       postStyle = { flex: '1', height: '100%' }
     }
 
-    const description = column ? "" : post.frontmatter.description;
+    const description = column ? "" : post?.content.subtitle;
 
-    console.log(post.frontmatter.featuredImage)
     return (
       <PostCard
         style={postStyle}
-        title={post.frontmatter.title}
-        featuredImage={post.frontmatter.featuredImage}
-        slug={post.fields.slug}
-        date={post.frontmatter.date}
+        title={post?.title}
+        featuredImageId={post?.virtuals.previewImage.imageId}
+        slug={post?.slug}
+        date={post?.updatedAt}
         description={description}
       />
     )
@@ -41,10 +39,14 @@ const ThreePosts = ({ posts, column = false }) => {
           {postWrapper(posts[0], 'primary')}
         </ColumnLarge>
         <ColumnSmall>
-          <FirstPost>
-            {postWrapper(posts[1], 'secondary')}
-          </FirstPost>
-          {postWrapper(posts[2], 'secondary')}
+          {posts[1] &&
+            <div>
+              <FirstPost>
+                {postWrapper(posts[1], 'secondary')}
+              </FirstPost>
+              {postWrapper(posts[2], 'secondary')}
+            </div>
+          }
         </ColumnSmall>
       </PostsContainer>
     </ol>
@@ -55,7 +57,9 @@ const ThreePosts = ({ posts, column = false }) => {
         <FirstPost>
           {postWrapper(posts[0], 'primary')}
         </FirstPost>
-        {postWrapper(posts[1], 'primary')}
+        {posts[1] &&
+          postWrapper(posts[1], 'primary')
+        }
       </Flex>
     </ol>
   )
@@ -85,6 +89,7 @@ const ColumnLarge = styled.div`
   flex-flow: column;
   margin-bottom: 10px;
   margin-right: 10px;
+  padding-right: 10px;
   border-right: 1px solid var(--dark-gray);
   @media (max-width: 800px) {
     margin-bottom: 0;

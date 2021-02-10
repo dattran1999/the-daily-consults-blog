@@ -12,7 +12,7 @@ import { SubscribeModalProvider } from '../context/modal';
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
-  const posts = data.allMarkdownRemark.nodes
+  const posts = data.allMediumPost.nodes
   const logo = data.file.childImageSharp.fluid
 
 
@@ -21,7 +21,7 @@ const BlogIndex = ({ data, location }) => {
       <Layout location={location} title={siteTitle} logo={logo}>
         <SEO title="All posts" />
         <Hero posts={posts} />
-        <Testimonials />
+        {/* <Testimonials /> */}
         <AllPosts posts={posts} />
         <SubcribeModal title={siteTitle} />
       </Layout>
@@ -45,28 +45,46 @@ export const pageQuery = graphql`
         }
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMediumPost {
       nodes {
-        excerpt
-        fields {
-          slug
+        title
+        updatedAt(formatString: "DD/MM/YYYY")
+        content {
+          subtitle
         }
-        frontmatter {
-          date(formatString: "MMMM DD, YYYY")
-          title
-          description
-          featuredImage {
-            alt
-            src {
-              childImageSharp {
-                fluid(maxWidth: 1024) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
+        virtuals {
+          previewImage {
+            imageId
           }
+          tags {
+            name
+          }
+          totalClapCount
         }
       }
     }
+    # allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    #   nodes {
+    #     excerpt
+    #     fields {
+    #       slug
+    #     }
+    #     frontmatter {
+    #       date(formatString: "MMMM DD, YYYY")
+    #       title
+    #       description
+    #       featuredImage {
+    #         alt
+    #         src {
+    #           childImageSharp {
+    #             fluid(maxWidth: 1024) {
+    #               ...GatsbyImageSharpFluid
+    #             }
+    #           }
+    #         }
+    #       }
+    #     }
+    #   }
+    # }
   }
 `

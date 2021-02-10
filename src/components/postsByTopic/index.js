@@ -8,13 +8,13 @@ import Flex from '../flex';
 const PostsByTopic = ({ topicTitle, titleColor, posts, column = false }) => {
   return (
     <>
-      <Title color={titleColor}>{topicTitle}</Title>
-      <ThreePosts posts={posts} column={column} />
-      <Flex halign='center'>
-        <ButtonLink type='secondary'>
-          Read more
-        </ButtonLink>
-      </Flex>
+      {/* Only show section if it has posts */}
+      {posts.length > 0 &&
+        <>
+          <Title color={titleColor}>{topicTitle}</Title>
+          <ThreePosts posts={posts} column={column} />
+        </>
+      }
     </>
   )
 }
