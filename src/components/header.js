@@ -275,5 +275,8 @@ const SearchButton = styled(MdSearch)`
   @media (max-width: ${NAV_BAR_BREAKPOINT}) {
     margin-right: 1.2rem;
   }
+  :hover {
+    cursor: pointer;
+  }
 `;
 export default Header
