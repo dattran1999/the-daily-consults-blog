@@ -38,6 +38,8 @@ const Primary = styled.div`
 
 const Secondary = styled.div`
   flex: 1;
+  padding-left: 2rem;
+  border-left: 1px solid var(--dark-gray);
   @media (max-width: 28em) {
     display: none;
   }

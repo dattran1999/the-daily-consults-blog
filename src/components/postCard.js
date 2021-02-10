@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import Image from 'gatsby-image';
 import styled from 'styled-components';
 import { colors } from '../theme';
 import Flex from './flex';
@@ -16,25 +15,27 @@ const PostCard = ({
   slug,
   date,
   description,
+  showDescription = true,
   // should display in row or column
   column = true,
   ...rest
 }) => {
   return (
     <Card {...rest}>
-      <a to={`${MEDIUM_URL}/${slug}`} itemProp="url">
+      <Clickable href={`${MEDIUM_URL}/${slug}`} itemProp="url">
         <Article direction={column ? 'column' : 'row'}>
           {/* Header of post */}
-          <header style={{ width: '100%' }}>
-            <ImageWrapper>
-              <img src={`${MEDIUM_CDN}/${featuredImageId}`} style={{ width: '100%' }}></img>
-            </ImageWrapper>
-          </header>
+          <Header column={column}>
+            <Img
+              src={`${MEDIUM_CDN}/${featuredImageId}`}
+              column={column}
+            />
+          </Header>
 
           {/* content */}
-          <ContentWrapper >
+          <ContentWrapper column={column}>
             <Heading type={type}><span itemProp="headline">{title}</span></Heading>
-            <Content type={type}
+            <Content showDescription={showDescription}
               dangerouslySetInnerHTML={{
                 __html: description,
               }}
@@ -43,25 +44,21 @@ const PostCard = ({
             <small>{date}</small>
           </ContentWrapper>
         </Article>
-      </a>
+      </Clickable>
     </Card>
   )
 }
 
+const Clickable = styled.a`
+  :hover {
+    cursor: pointer;
+  }
+`;
 const Card = styled.div`
   flex: 1;
   margin-top: 20px; 
   margin-right: 20px;
   width: 100%;
-`;
-
-const Heading = styled.h2`
-  margin-bottom: var(--spacing-4);
-  margin-top: var(--spacing-0);
-  font-size: ${props => props.type === 'primary' ? 'var(--fontSize-5)' : 'var(--fontSize-2)'};
-  @media (max-width: 28rem) {
-    font-size: var(--fontSize-3);
-  }
 `;
 
 const Article = styled(Flex)`
@@ -79,15 +76,37 @@ const Article = styled(Flex)`
   }
 `;
 
-const ImageWrapper = styled.div`
+const IMAGE_SIZE = '10rem';
+
+const Header = styled.header`
+  width: 100%;
+  width: ${props => props.column === false && IMAGE_SIZE};
+  height: ${props => props.column === false && IMAGE_SIZE};;
+  margin-right: ${props => props.column === false && '5rem'};
   margin-bottom: var(--spacing-4);
+`;
+
+const Img = styled.img`
+  width: 100%;
+  object-fit: cover;
+  width: ${props => props.column === false && IMAGE_SIZE};
+  height: ${props => props.column === false && IMAGE_SIZE};;
 `;
 
 const ContentWrapper = styled.section`
 `;
 
+const Heading = styled.h2`
+  margin-bottom: var(--spacing-4);
+  margin-top: var(--spacing-0);
+  font-size: ${props => props.type === 'primary' ? 'var(--fontSize-5)' : 'var(--fontSize-2)'};
+  @media (max-width: 28rem) {
+    font-size: var(--fontSize-3);
+  }
+`;
+
 const Content = styled.p`
-  display: ${props => props.type === 'secondary' && 'none'};
+  display: ${props => props.showDescription ? 'block' : 'none'};
   @media (max-width: 28rem) {
     display: block;
   }

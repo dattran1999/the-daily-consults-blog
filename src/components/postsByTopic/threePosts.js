@@ -29,6 +29,7 @@ const ThreePosts = ({ posts, column = false }) => {
         slug={post?.uniqueSlug}
         date={post?.updatedAt}
         description={description}
+        showDescription={!!!(type === 'secondary')}
       />
     )
   }
@@ -58,9 +59,11 @@ const ThreePosts = ({ posts, column = false }) => {
         <FirstPost>
           {postWrapper(posts[0], 'secondary')}
         </FirstPost>
-        {posts[1] &&
-          postWrapper(posts[1], 'secondary')
-        }
+        <FirstPost>
+          {posts[1] &&
+            postWrapper(posts[1], 'secondary')
+          }
+        </FirstPost>
       </Flex>
     </ol>
   )
