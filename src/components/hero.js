@@ -6,6 +6,14 @@ import PostsByTopic from './postsByTopic';
 import Section from './section';
 
 const Hero = ({ posts }) => {
+  const popularPosts = [...posts].sort((a, b) => {
+    const keyA = a.virtuals.totalClapCount;
+    const keyB = b.virtuals.totalClapCount;
+    // Compare the 2 dates
+    if (keyA < keyB) return 1;
+    if (keyA > keyB) return -1;
+    return 0;
+  });
   return (
     <Section>
       <Flex direction="row" halign="space-around">
@@ -13,11 +21,10 @@ const Hero = ({ posts }) => {
           <PostsByTopic topicTitle="Recently Upload" titleColor="black" posts={posts} />
         </Primary>
         <Secondary>
-          <PostsByTopic topicTitle="Popular" titleColor="black" posts={posts} column={true} />
+          <PostsByTopic topicTitle="Popular" titleColor="black" posts={popularPosts} column={true} />
         </Secondary>
       </Flex>
     </Section>
-
   )
 }
 
