@@ -61,6 +61,7 @@ export const pageQuery = graphql`
           }
           totalClapCount
         }
+        uniqueSlug
       }
     }
     # allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {

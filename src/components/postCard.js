@@ -4,7 +4,8 @@ import Image from 'gatsby-image';
 import styled from 'styled-components';
 import { colors } from '../theme';
 
-const MEDIUM_CDN = 'https://miro.medium.com/max/596/';
+const MEDIUM_CDN = 'https://miro.medium.com/max/596';
+const MEDIUM_URL = 'https://christopherdieunguyen.medium.com'
 
 const PostCard = ({ title, featuredImageId, slug, date, description, ...rest }) => {
   return (
@@ -13,13 +14,10 @@ const PostCard = ({ title, featuredImageId, slug, date, description, ...rest }) 
         {/* Header of post */}
         <header>
           <ImageWrapper>
-            {/* <Image
-              fluid={featuredImage?.src?.childImageSharp.fluid}
-              alt={featuredImage?.alt} /> */}
             <img src={`${MEDIUM_CDN}/${featuredImageId}`} style={{ width: '100%' }}></img>
           </ImageWrapper>
           <h2>
-            <Link to={slug} itemProp="url">
+            <Link to={`${MEDIUM_URL}/${slug}`} itemProp="url">
               <span itemProp="headline">{title}</span>
             </Link>
           </h2>

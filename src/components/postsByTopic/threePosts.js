@@ -25,7 +25,7 @@ const ThreePosts = ({ posts, column = false }) => {
         style={postStyle}
         title={post?.title}
         featuredImageId={post?.virtuals.previewImage.imageId}
-        slug={post?.slug}
+        slug={post?.uniqueSlug}
         date={post?.updatedAt}
         description={description}
       />
