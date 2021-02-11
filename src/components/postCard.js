@@ -17,8 +17,10 @@ const PostCard = ({
   slug,
   date,
   description,
+  // array of objects { name: "some tag name"}
+  tags,
   showDescription = true,
-  // should display in row or column
+  // should display the card in row or column
   column = true,
   ...rest
 }) => {
@@ -44,6 +46,11 @@ const PostCard = ({
               itemProp="description"
             />
             <small>{date}</small>
+            {/* <TagsWrapper>
+              {tags.map((tag, index) => (
+                <Tag key={index}>{tag.name}</Tag>
+              ))}
+            </TagsWrapper> */}
           </ContentWrapper>
         </Article>
       </Clickable>
@@ -126,4 +133,13 @@ const Content = styled.p`
   margin-bottom: var(--spacing-4);
 `;
 
+const TagsWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+const Tag = styled.div`
+  border-radius: 5px;
+  background-color: var(--dark-gray);
+`;
 export default PostCard;

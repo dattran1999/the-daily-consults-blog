@@ -29,6 +29,7 @@ const ThreePosts = ({ posts, column = false }) => {
         slug={post?.uniqueSlug}
         date={post?.updatedAt}
         description={description}
+        tags={post.virtuals.tags}
         showDescription={!!!(type === 'secondary')}
       />
     )

@@ -83,6 +83,7 @@ const SearchModal = ({ isOpen, closeModal }) => {
                 slug={post?.uniqueSlug}
                 date={post?.updatedAt}
                 description={post?.content.subtitle}
+                tags={post.virtuals.tags}
                 column={false}
                 type='secondary'
               />
