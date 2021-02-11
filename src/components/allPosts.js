@@ -5,6 +5,8 @@ import ButtonLink from './buttonLink';
 import Flex from './flex';
 import PostsByTopic from './postsByTopic';
 
+import { filterPostByTag } from '../utils/filter';
+
 import { SubscribeModalContext } from '../context/modal';
 
 const AllPosts = ({ posts }) => {
@@ -13,18 +15,10 @@ const AllPosts = ({ posts }) => {
     dispatch({ type: 'toggle_button' });
   }
 
-  const filerPost = (post, name) => {
-    for (const tag of post.virtuals.tags) {
-      if (tag.name.toLowerCase() === name.toLowerCase()) {
-        return true;
-      }
-    }
-    return false;
-  }
-  const CustomerInsightsPosts = posts.filter(post => filerPost(post, "Customer Insight"));
-  const ValueCreationPosts = posts.filter(post => filerPost(post, "Value Creation"));
-  const MarketRoadmapPosts = posts.filter(post => filerPost(post, "Marketing"));
-  const InANutShellPosts = posts.filter(post => filerPost(post, "Strategy"));
+  const CustomerInsightsPosts = posts.filter(post => filterPostByTag(post, "Customer Insight"));
+  const ValueCreationPosts = posts.filter(post => filterPostByTag(post, "Value Creation"));
+  const MarketRoadmapPosts = posts.filter(post => filterPostByTag(post, "Marketing"));
+  const InANutShellPosts = posts.filter(post => filterPostByTag(post, "Strategy"));
   return (
     <Flex>
       <Primary>

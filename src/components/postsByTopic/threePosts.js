@@ -8,7 +8,7 @@ import Flex from '../flex';
 const ThreePosts = ({ posts, column = false }) => {
   const noPostMessage = (
     <p>
-      This section is currently empty 😀
+      This section is currently empty.
     </p>
   )
 
