@@ -248,7 +248,7 @@ const LinkWrapper = styled.div`
       color: inherit;
     }
     :hover {
-      transition: all 300ms ease-in;
+      transition: all 300ms ease-out;  
       color: ${props => props.linkColor};
     }
   }
