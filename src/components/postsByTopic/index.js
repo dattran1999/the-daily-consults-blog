@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 
+import { BsArrowRight } from 'react-icons/bs';
+
 import ThreePosts from './threePosts';
 
 const topicTitleToLink = {
@@ -18,9 +20,10 @@ const PostsByTopic = ({ topicTitle, titleColor, posts, column = false }) => {
       {/* Only show section if it has posts */}
       {posts.length > 0 &&
         <>
-          <Link to={topicTitleToLink[topicTitle]}>
+          <Link style={{ width: '100%' }} to={topicTitleToLink[topicTitle]}>
             <Title color={titleColor}>
               {topicTitle}
+              <BsArrowRight />
             </Title>
           </Link>
           <ThreePosts posts={posts} column={column} />
@@ -32,6 +35,17 @@ const PostsByTopic = ({ topicTitle, titleColor, posts, column = false }) => {
 
 const Title = styled.h1`
   color: ${props => props.color};
+  :hover {
+    svg {
+      transition: all 200ms ease-out;
+      transform: translateX(30%);
+    }
+  }
+  svg {
+    font-size: var(--fontSize-4);
+    margin-left: 0.8rem;
+    transition: all 200ms ease-in;
+  }
 `;
 
 export default PostsByTopic;

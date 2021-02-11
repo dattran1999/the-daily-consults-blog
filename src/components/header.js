@@ -14,10 +14,10 @@ import { SubscribeModalContext } from '../context/modal';
 
 const Header = ({ title, logo }) => {
   const links = [
-    { title: 'Customer Insights Series', to: '/' },
-    { title: 'Value Creation Series', to: '/' },
-    { title: 'Market Roadmap Series', to: '/' },
-    { title: 'In A Nutshell Series', to: '/' },
+    { title: 'Customer Insights Series', to: '/', titleColor: "var(--orange)" },
+    { title: 'Value Creation Series', to: '/', titleColor: "var(--blue)" },
+    { title: 'Market Roadmap Series', to: '/', titleColor: "var(--green)" },
+    { title: 'In A Nutshell Series', to: '/', titleColor: "var(--fuschia)" },
   ]
 
   // subscribe modal
@@ -119,7 +119,7 @@ const Header = ({ title, logo }) => {
                 </HamburgerMenu>
                 <NavLinksWrapper ref={navLinksRef} colors={colors}>
                   {links.map((link, index) => (
-                    <LinkWrapper key={index}>
+                    <LinkWrapper linkColor={link.titleColor} key={index} >
                       <Link to={link.to}><h4>{link.title}</h4></Link>
                     </LinkWrapper>
                   ))}
@@ -128,7 +128,7 @@ const Header = ({ title, logo }) => {
 
               <NavLinksWrapper colors={colors}>
                 {links.map((link, index) => (
-                  <LinkWrapper key={index}>
+                  <LinkWrapper linkColor={link.titleColor} key={index}>
                     <Link to={link.to}><h5>{link.title}</h5></Link>
                   </LinkWrapper>
                 ))}
@@ -238,13 +238,18 @@ const NavBarMain = styled.div`
 
 const LinkWrapper = styled.div`
   a {
-    text-decoration: none;
     color: inherit;
     h5 {
       margin: 0 0;
+      color: inherit;
     }
     h4 {
       margin: 0 0;
+      color: inherit;
+    }
+    :hover {
+      transition: all 300ms ease-in;
+      color: ${props => props.linkColor};
     }
   }
 `;
