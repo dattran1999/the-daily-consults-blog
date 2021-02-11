@@ -1,6 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 
+import SEO from '../components/seo';
 import AllPostsByTopic from '../components/allPostsByTopic';
 import Layout from '../components/layout';
 import Section from '../components/section';
@@ -12,6 +13,7 @@ const RecentlyUpload = ({ data }) => {
 
   return (
     <Layout title={siteTitle} logo={logo}>
+      <SEO title='Recently Upload' />
       <Section>
         <AllPostsByTopic posts={posts} topicTitle='Recently Upload' titleColor='var(--black)' />
       </Section>
