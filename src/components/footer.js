@@ -2,24 +2,54 @@ import React from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
 
+import Image from 'gatsby-image';
 import Container from './container';
 import Flex from './flex';
 import { colors } from '../theme';
 
-const footer = () => {
+const footer = ({ title, logo }) => {
+  const getInitials = (string) => {
+    let names = string.split(' ');
+    let initials = '';
+    for (const name of names) {
+      initials += name.substring(0, 1).toUpperCase();
+    }
+    return initials;
+  };
   return (
     <Footer colors={colors}>
-      <Container style={{ height: '100%' }}>
+      <Container hasPaddingVertical={false}>
         <Flex
           direction="row"
-          halign="space-around"
-          valign="center"
-          style={{ height: '100%' }}
+          halign="space-between"
+          valign="flex-start"
         >
-          <Link to="/">Story of the week</Link>
-          <Link to="/">Posts</Link>
-          <Link to="/">Books</Link>
-          <Link to="/">More</Link>
+          <Section>
+            <Flex valign='center'>
+              <ImageWrapper>
+                <Image fluid={logo} alt="logo" />
+              </ImageWrapper>
+              <Flex direction="column">
+                <h1>{getInitials(title)}</h1>
+                <h5>© {new Date().getFullYear()}</h5>
+              </Flex>
+            </Flex>
+          </Section>
+          <Section>
+            <h3>Socials</h3>
+            <Flex direction='column'>
+              <p>Email</p>
+              <p>Facebook</p>
+            </Flex>
+          </Section>
+          <Section>
+            <h3>About</h3>
+            <Flex direction='column'>
+              <p>About</p>
+              <p>News & Updates</p>
+              <p>FAQ</p>
+            </Flex>
+          </Section>
         </Flex>
       </Container>
     </Footer>
@@ -30,4 +60,19 @@ const Footer = styled.footer`
   background-color: ${props => props.colors.gray};
 `;
 
-export default footer
+const Section = styled.div`
+  h1, h2, h3, h4, h5, p {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  h3 {
+    margin-bottom: 1.2rem;
+  }
+`;
+const ImageWrapper = styled.div`
+  width: 5em;
+  min-width: 60px;
+  margin-right: 1em;
+`;
+
+export default footer;

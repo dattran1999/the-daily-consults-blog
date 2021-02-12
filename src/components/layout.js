@@ -12,7 +12,7 @@ const Layout = ({ title, children, logo }) => {
       <Container>
         <main>{children}</main>
       </Container>
-      <Footer />
+      <Footer title={title} logo={logo} />
     </>
   )
 }
