@@ -8,10 +8,10 @@ import ThreePosts from './threePosts';
 
 const topicTitleToLink = {
   'Recently Upload': '/recently-upload',
-  'Customer Insights Series': '/customer-insights',
-  'Value Creation Series': '/value-creation',
-  'Market Roadmap Series': '/market-roadmap',
-  'In A Nutshell Series': '/in-a-nutshell',
+  'Customer Insights Series': '/customer-insights-series',
+  'Value Creation Series': '/value-creation-series',
+  'Market Roadmap Series': '/market-roadmap-series',
+  'In a Nutshell Series': '/in-a-nutshell-series',
 
 }
 const PostsByTopic = ({ topicTitle, titleColor, posts, column = false }) => {

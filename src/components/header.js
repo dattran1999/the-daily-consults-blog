@@ -14,10 +14,10 @@ import { SubscribeModalContext } from '../context/modal';
 
 const Header = ({ title, logo }) => {
   const links = [
-    { title: 'Customer Insights Series', to: '/', titleColor: "var(--orange)" },
-    { title: 'Value Creation Series', to: '/', titleColor: "var(--blue)" },
-    { title: 'Market Roadmap Series', to: '/', titleColor: "var(--green)" },
-    { title: 'In A Nutshell Series', to: '/', titleColor: "var(--fuschia)" },
+    { title: 'Customer Insights Series', to: '/customer-insights-series', titleColor: "var(--orange)" },
+    { title: 'Value Creation Series', to: '/value-creation-series', titleColor: "var(--blue)" },
+    { title: 'Market Roadmap Series', to: '/market-roadmap-series', titleColor: "var(--green)" },
+    { title: 'In A Nutshell Series', to: '/in-a-nutshell-series', titleColor: "var(--fuschia)" },
   ]
 
   // subscribe modal
