@@ -16,7 +16,7 @@ const index = ({ data }) => {
 
   return (
     <Layout title={siteTitle} logo={logo}>
-      <SEO title='Recently Upload' />
+      <SEO title='Market Roadmap Series' />
       <Section>
         <AllPostsByTopic
           posts={MarketRoadmapPosts}

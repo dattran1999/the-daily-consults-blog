@@ -16,7 +16,7 @@ const ValueCreationSeriesPosts = ({ data }) => {
 
   return (
     <Layout title={siteTitle} logo={logo}>
-      <SEO title='Recently Upload' />
+      <SEO title='Value Creation Series' />
       <Section>
         <AllPostsByTopic
           posts={ValueCreationPosts}

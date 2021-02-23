@@ -16,7 +16,7 @@ const CustomerInsightSeriesPosts = ({ data }) => {
 
   return (
     <Layout title={siteTitle} logo={logo}>
-      <SEO title='Recently Upload' />
+      <SEO title='Customer Insight Series' />
       <Section>
         <AllPostsByTopic
           posts={CustomerInsightsPosts}

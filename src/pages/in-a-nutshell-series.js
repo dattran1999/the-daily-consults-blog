@@ -16,7 +16,7 @@ const index = ({ data }) => {
 
   return (
     <Layout title={siteTitle} logo={logo}>
-      <SEO title='Recently Upload' />
+      <SEO title='In a Nutshell Series' />
       <Section>
         <AllPostsByTopic
           posts={InANutShellPosts}
