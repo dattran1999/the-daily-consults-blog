@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import styled from 'styled-components';
 
 import ButtonLink from './buttonLink';
@@ -9,10 +9,11 @@ import { SubscribeModalContext } from '../context/modal';
 
 const SubcribeModal = ({ title }) => {
   const [state, dispatch] = useContext(SubscribeModalContext);
+  const [email, setEmail] = useState('');
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log('submit');
+    console.log(email);
   }
   const closeModal = () => {
     dispatch({ type: 'toggle_button' });
@@ -24,7 +25,13 @@ const SubcribeModal = ({ title }) => {
           <h3>{title}</h3>
           <p>Subscribe to our mailing list</p>
           <form onSubmit={handleSubmit}>
-            <input type='email' name='email' placeholder='example@mail.com' required></input>
+            <Input
+              type='email'
+              name='email'
+              placeholder='example@mail.com'
+              required
+              onChange={e => setEmail(e.target.value)}
+            />
             <ButtonLink onClick={handleSubmit} type='attention'>Subscribe</ButtonLink>
           </form>
         </Flex>
@@ -35,6 +42,11 @@ const SubcribeModal = ({ title }) => {
 
 const Container = styled.div`
   background-color: var(--yellow);
+`;
+
+const Input = styled.input`
+  outline: none;
+  margin-bottom: var(--spacing-4);
 `;
 
 export default SubcribeModal;
