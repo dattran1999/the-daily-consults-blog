@@ -74,7 +74,7 @@ const SearchModal = ({ isOpen, closeModal }) => {
         {searchResults.length === 0 && haveSearch ?
           <p>No results</p>
           :
-          <Results direction='column'>
+          <Results direction='column' haveSearch={haveSearch}>
             {searchResults.map((post, index) => (
               <PostCard
                 key={index}
@@ -114,6 +114,7 @@ const SearchButton = styled(MdSearch)`
 `;
 
 const Results = styled(Flex)`
+  display: ${props => props.haveSearch ? 'block' : 'none'};
   overflow: scroll;
 `;
 export default SearchModal;
