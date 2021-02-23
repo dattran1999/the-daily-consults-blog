@@ -246,13 +246,10 @@ table thead tr th {
 
 /* Link */
 
-a {
-  color: var(--color-primary);
-}
-
 a:hover,
 a:focus {
   text-decoration: none;
+  cursor: pointer;
 }
 
 /* Custom classes */

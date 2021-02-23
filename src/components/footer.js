@@ -38,16 +38,23 @@ const footer = ({ title, logo }) => {
           <Section>
             <h3>Socials</h3>
             <Flex direction='column'>
-              <p>Email</p>
-              <p>Facebook</p>
+              <a href="mailto: Christopherdieunguyen@gmail.com" target="_blank">
+                Email
+              </a>
+              <a href="https://www.facebook.com/christopherdieu.nguyen" target="_blank">
+                Facebook
+              </a>
+              <a href="https://twitter.com/Christo95515927" target="_blank">
+                Twitter
+              </a>
             </Flex>
           </Section>
           <Section>
             <h3>About</h3>
             <Flex direction='column'>
-              <p>About</p>
-              <p>News & Updates</p>
-              <p>FAQ</p>
+              <Link to='/'>About</Link>
+              <Link to='/'>News & Updates</Link>
+              <Link to='/'>FAQ</Link>
             </Flex>
           </Section>
         </Flex>
