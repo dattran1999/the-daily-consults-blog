@@ -11,7 +11,7 @@ import { filterPostByTag } from '../utils/filter';
 import { SubscribeModalContext } from '../context/modal';
 
 const AllPosts = ({ posts }) => {
-  const [state, dispatch] = useContext(SubscribeModalContext);
+  const [_, dispatch] = useContext(SubscribeModalContext);
   const handleSubscribe = () => {
     dispatch({ type: 'toggle_button' });
   }

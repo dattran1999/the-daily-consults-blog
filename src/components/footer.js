@@ -38,13 +38,13 @@ const footer = ({ title, logo }) => {
           <Section>
             <h3>Socials</h3>
             <Flex direction='column'>
-              <a href="mailto: Christopherdieunguyen@gmail.com" target="_blank">
+              <a href="mailto: Christopherdieunguyen@gmail.com" rel="noreferrer" target="_blank">
                 Email
               </a>
-              <a href="https://www.facebook.com/christopherdieu.nguyen" target="_blank">
+              <a href="https://www.facebook.com/christopherdieu.nguyen" rel="noreferrer" target="_blank">
                 Facebook
               </a>
-              <a href="https://twitter.com/Christo95515927" target="_blank">
+              <a href="https://twitter.com/Christo95515927" rel="noreferrer" target="_blank">
                 Twitter
               </a>
             </Flex>

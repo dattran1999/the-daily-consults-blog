@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'gatsby';
 import styled from 'styled-components';
 
 import Flex from './flex';
@@ -46,11 +45,6 @@ const PostCard = ({
               itemProp="description"
             />
             <small>{date}</small>
-            {/* <TagsWrapper>
-              {tags.map((tag, index) => (
-                <Tag key={index}>{tag.name}</Tag>
-              ))}
-            </TagsWrapper> */}
           </ContentWrapper>
         </Article>
       </Clickable>
@@ -104,7 +98,9 @@ const Img = styled(LazyLoadImage)`
   width: 100%;
   object-fit: cover;
   width: ${props => props.column === false && IMAGE_SIZE};
-  height: ${props => props.column === false && IMAGE_SIZE};;
+  height: ${props => props.column === false && IMAGE_SIZE};
+  border-radius: 15px;
+  border: 1px solid var(--light-gray);
   @media (max-width: 28rem) {
     width: ${props => props.column === false && MOBILE_IMAGE_SIZE};
     height: ${props => props.column === false && MOBILE_IMAGE_SIZE};;
@@ -133,13 +129,4 @@ const Content = styled.p`
   margin-bottom: var(--spacing-4);
 `;
 
-const TagsWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-`;
-
-const Tag = styled.div`
-  border-radius: 5px;
-  background-color: var(--dark-gray);
-`;
 export default PostCard;
